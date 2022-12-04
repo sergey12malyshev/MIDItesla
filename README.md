@@ -10,3 +10,8 @@ Tesla coil music project
 ```bash
 sudo crontab -e
 ```
+# Полезная информация
+* https://bsvi.ru/preryvatel-dlya-drsstc/ - прерыватель использованный для проекта
+* https://bsvi.ru/malleus-maleficarum-apgrejd/
+* http://teslacoil.ru/katushki-tesla/tranzistornyie-katushki/polumostovaya-sstc/ 
+* https://stevehv.4hv.org/SSTC5.htm
