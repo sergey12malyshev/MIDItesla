@@ -1,11 +1,13 @@
 # MIDItesla
 Tesla coil music project
-![Иллюстрация к проекту](https://github.com/sergey12malyshev/MIDItesla//raw/master/images/КТ.jpg =250x250)
-![Иллюстрация к проекту](https://github.com/sergey12malyshev/MIDItesla//raw/master/images/Пульт.jpg)
+
+<img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/КТ.jpg" width=25% height=25%> <img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/Пульт.jpg" width=35% height=35%>
+
 
 ### Аппаратная реализация ###
 
-![Иллюстрация к проекту](https://github.com/sergey12malyshev/MIDItesla//raw/master/schemes/Cхема_структурная.BMP)
+<img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/schemes/Cхема_структурная.BMP" width=40% height=40%>
+
 ### Программная реализация ###
 * MainMidi.py - python скрипт генерирующий MIDI последовательности в serial-порт raspberry pi. Осуществляет переключение мелодий путём опроса кнопки.
 * lcd1602notButton.py - python скрипт осуществляющий вывод информации о состоянии raspberry на LCD экран 1602 (в проекте опционален).
