@@ -1,6 +1,6 @@
 # MIDItesla
 Tesla coil music project
-![Иллюстрация к проекту](https://github.com/sergey12malyshev/MIDItesla//raw/master/images/КТ.jpg)
+![Иллюстрация к проекту](https://github.com/sergey12malyshev/MIDItesla//raw/master/images/КТ.jpg =250x250)
 ![Иллюстрация к проекту](https://github.com/sergey12malyshev/MIDItesla//raw/master/images/Пульт.jpg)
 
 ### Аппаратная реализация ###
