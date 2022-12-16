@@ -1,5 +1,7 @@
 # MIDItesla
-Tesla coil music project
+MIDI Tesla Coil Controller
+
+Проект музыкальной катушки Тесла построенной по топологии SSTC полумост. Состоит из непосредсвенно катушки Тесла, MIDI-контроллера состоящего из прерывателя bsvi на Atmega8 и микрокомпьютера Rasberry Pi 3B генерирующего MIDI мелодии.
 
 <img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/КТ.jpg" width=25% height=25%> <img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/Пульт.jpg" width=35% height=35%>
 
@@ -21,3 +23,6 @@ sudo crontab -e
 * https://bsvi.ru/malleus-maleficarum-apgrejd/
 * http://teslacoil.ru/katushki-tesla/tranzistornyie-katushki/polumostovaya-sstc/ 
 * https://stevehv.4hv.org/SSTC5.htm
+
+### Удалённое управление
+VNC Viewer: http://wiki.amperka.ru/rpi:installation:vnc
