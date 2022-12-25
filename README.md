@@ -18,6 +18,9 @@ MIDI Tesla Coil Controller
 ```bash
 sudo crontab -e
 ```
+### Видео ###
+https://youtu.be/iuJQ5y0yN18
+
 # Полезная информация
 * https://bsvi.ru/preryvatel-dlya-drsstc/ - прерыватель использованный для проекта
 * https://bsvi.ru/malleus-maleficarum-apgrejd/
