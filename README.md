@@ -3,12 +3,13 @@ MIDI Tesla Coil Controller
 
 Проект музыкальной катушки Тесла построенной по топологии SSTC полумост. Состоит из непосредсвенно катушки Тесла, MIDI-контроллера состоящего из прерывателя bsvi на Atmega8 и микрокомпьютера Rasberry Pi 3B генерирующего MIDI мелодии.
 
-<img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/КТ.jpg" width=15% height=15%> <img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/Пульт.jpg" width=25% height=15%>
+<img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/1677242053874.jpg" width=15% height=15%> <img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/1677242053886.jpg" width=15% height=15%> 
 
+<img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/1677241838375.jpg" width=15% height=15%> <img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/1677241838365.jpg" width=15% height=15%>
 
 ### Аппаратная реализация (Hardware) ###
 
-<img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/schemes/Cхема_структурная.BMP" width=30% height=30%>
+<img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/schemes/Cхема_структурная.BMP" width=30% height=55%>
 
 Cхема электрическая принципиальная КТ приведена в директории shemes:
 
@@ -23,10 +24,10 @@ Cхема электрическая принципиальная КТ прив�
 ```bash
 sudo crontab -e
 ```
-### Видео работы ###
+## Видео работы ##
 https://youtu.be/iuJQ5y0yN18
 
-# Полезная информация
+## Полезная информация
 * https://bsvi.ru/preryvatel-dlya-drsstc/ - прерыватель использованный для проекта
 * https://bsvi.ru/malleus-maleficarum-apgrejd/
 * http://teslacoil.ru/katushki-tesla/tranzistornyie-katushki/polumostovaya-sstc/ 
@@ -37,7 +38,7 @@ https://youtu.be/iuJQ5y0yN18
 ### Удалённое управление
 VNC Viewer: http://wiki.amperka.ru/rpi:installation:vnc
 
-### Параметры резонансного трансформатора
+### Параметры резонансного трансформатора ###
 Емкость тороида: 6 пФ
 
 Индуктивность первичной обмотки: 2.94 мкГн
