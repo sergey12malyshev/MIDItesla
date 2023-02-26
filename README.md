@@ -34,6 +34,7 @@ https://youtu.be/iuJQ5y0yN18
 * https://stevehv.4hv.org/SSTC5.htm
 * https://kaizerpowerelectronics.dk/tesla-coils/sstc-design-guide/
 * https://teslafon.ru/techno/calcs
+* https://www.loneoceans.com/labs/ud27/
 
 ### Удалённое управление
 VNC Viewer: http://wiki.amperka.ru/rpi:installation:vnc
