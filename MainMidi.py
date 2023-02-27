@@ -3,6 +3,7 @@
 import serial                                     # Подключаем модуль для работы с uart
 import time                                       # Подключаем модуль для работы со временем
 import RPi.GPIO as GPIO                           # Подключаем модуль для работы с GPIO
+from random import randint
  
 BUZZ_PIN = 17                                     # Pin buzzer                                     
 BUTTON_PIN = 2                                    # Pin button
@@ -38,25 +39,17 @@ def button_callback(channel):
         GPIO.output(BUZZ_PIN, True)
         time.sleep(0.02)
         GPIO.output(BUZZ_PIN, False)
-        if melodiNumber == 0:
-          melodiNumber = 1
-        else:
-          if melodiNumber == 1:
-            melodiNumber = 2
-          else:
-            if melodiNumber == 2:
-              melodiNumber = 3  
-            else:
-              if melodiNumber == 3:
-                melodiNumber = 4
-              else:
-                if melodiNumber == 4:
-                  melodiNumber = 0 
+        
+        melodiNumber = melodiNumber + 1
+        if melodiNumber == 6:
+          melodiNumber = 0
+        
         print(melodiNumber)
     print("Button was pushed!")
     
 
 def playNote(note, timeOnLocal, timeOffLocal):
+    
     global melodiNumber
     global oldMelodiNumber
     
@@ -307,17 +300,20 @@ def imperialMarch():
         if playNote(51, timeOn*0.75, timeOff/2):return 1
         if playNote(58, timeOn/4, timeOff/2)   :return 1
         if playNote(55, timeOn*2, timeOff*2)   :return 1
-          
-
+           
+def random():
+       random_note = randint(36,71)
+       playNote(random_note, 0.12, 0.07)
+       
 def disable():
-    
        ser.write(bytearray([(note_off << 4) | channel, 40, velocity]))
+       
        
 GPIO.add_event_detect(2,GPIO.FALLING,callback=button_callback)    
 try:                                    # Пытаемся выполнить следующий код:
   while True:
         if (melodiNumber == 0):
-          valcesDogs()
+           valcesDogs()
         else:
          if (melodiNumber == 1):
            mario()
@@ -325,8 +321,11 @@ try:                                    # Пытаемся выполнить с
           if (melodiNumber == 2):
             imperialMarch()
           else:
-             if (melodiNumber == 3):
-               test()  
+            if (melodiNumber == 3):
+              test()
+            else:
+             if (melodiNumber == 4):
+               random()
              else:
                disable()
 
