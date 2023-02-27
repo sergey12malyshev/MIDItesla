@@ -1,5 +1,10 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+@Author: Malyshev S.E.
+@Date: 2022
+Todo: 
+"""
 import serial                                     # Подключаем модуль для работы с uart
 import time                                       # Подключаем модуль для работы со временем
 import RPi.GPIO as GPIO                           # Подключаем модуль для работы с GPIO
