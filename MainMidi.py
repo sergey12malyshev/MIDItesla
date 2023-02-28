@@ -25,8 +25,8 @@ note_off = 8
 note_on = 9
 
 # Test variable:
-flagUp = 1
-flagDown = 0
+flagUp = True
+flagDown = False
 
 melodiNumber = 0
 oldMelodiNumber = 0
@@ -210,19 +210,19 @@ def test():
     timeOn = 0.12
     timeOff = 0.07
     
-    if flagUp == 1:
+    if flagUp == True:
         note +=1
         if (note >= 71):
             note = 71
-            flagUp = 0
-            flagDown = 1
+            flagUp = False
+            flagDown = True
       
-    if flagDown == 1:
+    if flagDown == True:
         note -=1
         if (note <= 36):
             note = 36
-            flagUp = 1
-            flagDown = 0
+            flagUp = True
+            flagDown = False
     
     if playNote(note, timeOn, timeOff) :return 1
 
