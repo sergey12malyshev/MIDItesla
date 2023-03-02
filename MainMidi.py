@@ -54,9 +54,7 @@ def button_callback(channel):
     
 
 def playNote(note, timeOnLocal, timeOffLocal):
-    
-    global melodiNumber
-    global oldMelodiNumber
+    global melodiNumber, oldMelodiNumber
     
     NOTE_OFF = 8 # (0x8n) Комманда выключить ноту
     NOTE_ON = 9  # (0x9n) Комманда включить ноту
@@ -75,7 +73,6 @@ def playNote(note, timeOnLocal, timeOffLocal):
     return 0
     
 def valcesDogs():
-    
     timeOn = 0.3
     timeOff = 0.1
     # this 1 tact   
@@ -109,7 +106,6 @@ def valcesDogs():
               
 
 def mario():
-    
     timeOn = 0.2
     timeOff = 0.07
     
@@ -207,7 +203,7 @@ def mario():
     
 def test():
     global note, flagUp, flagDown
-
+    
     timeOn = 0.12
     timeOff = 0.07
     
@@ -228,7 +224,6 @@ def test():
     if playNote(note, timeOn, timeOff) :return 1
 
 def imperialMarch():
-    
     timeOn = 0.35
     timeOff = 0.18
     # this 1 tact
