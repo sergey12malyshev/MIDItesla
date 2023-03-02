@@ -20,9 +20,6 @@ ser = serial.Serial('/dev/ttyS0', baudrate=31250)
 channel = 2 # this represents channel 
 
 note = 36 #max 71 min 36
-velocity = 100
-note_off = 8
-note_on = 9
 
 # Test variable:
 flagUp = True
@@ -61,9 +58,13 @@ def playNote(note, timeOnLocal, timeOffLocal):
     global melodiNumber
     global oldMelodiNumber
     
-    ser.write(bytearray([(note_on << 4) | channel, note, velocity]))
+    NOTE_OFF = 8 # (0x8n) Комманда выключить ноту
+    NOTE_ON = 9  # (0x9n) Комманда включить ноту
+    velocity = 100 # сила нажатия клавиши, interrupter её не воспринимает (должна быть больше 0)
+    
+    ser.write(bytearray([(NOTE_ON << 4) | channel, note, velocity]))
     time.sleep(timeOnLocal)
-    ser.write(bytearray([(note_off << 4) | channel, note, velocity]))
+    ser.write(bytearray([(NOTE_OFF << 4) | channel, note, velocity]))
     time.sleep(timeOffLocal)
     
     print(str(note)+' '+str(timeOnLocal)+' '+str(timeOffLocal))
@@ -314,8 +315,9 @@ def random():
     playNote(random_note, 0.12, 0.07)
        
 def disable():
-    ser.write(bytearray([(note_off << 4) | channel, 40, velocity]))
-       
+    SYS_RESET = 0xFF #Системное сообщение - сброс всех устройств https://ccrma.stanford.edu/~craig/articles/linuxmidi/misc/essenmidi.html
+    ser.write(bytearray([SYS_RESET, 0, 0])) # Сдвига на 4 и сложения с номером канала нет т.к. системное сообщение
+    time.sleep(0.05)                                    
        
 GPIO.add_event_detect(2,GPIO.FALLING,callback=button_callback)    
 try:                                    # Пытаемся выполнить следующий код:
