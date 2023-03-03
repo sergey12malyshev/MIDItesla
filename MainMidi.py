@@ -75,36 +75,18 @@ def playNote(note, timeOnLocal, timeOffLocal):
 def valcesDogs():
     timeOn = 0.3
     timeOff = 0.1
-    # this 1 tact   
-    if playNote(65, timeOn, timeOff):return 1   
-    if playNote(67, timeOn, timeOff):return 1                 
-    if playNote(67, timeOn, timeOff):return 1
-    if playNote(65, timeOn, timeOff):return 1   
-    if playNote(67, timeOn, timeOff):return 1   
-    if playNote(67, timeOn, timeOff):return 1 
-    # this 2 tact      
-    if playNote(64, timeOn, timeOff):return 1 
-    if playNote(67, timeOn, timeOff):return 1 
-    if playNote(67, timeOn, timeOff):return 1 
-    if playNote(64, timeOn, timeOff):return 1 
-    if playNote(67, timeOn, timeOff):return 1 
-    if playNote(67, timeOn, timeOff):return 1 
-    # this 3 tact  
-    if playNote(62, timeOn, timeOff):return 1 
-    if playNote(71, timeOn, timeOff):return 1  
-    if playNote(71, timeOn, timeOff):return 1 
-    if playNote(62, timeOn, timeOff):return 1  
-    if playNote(71, timeOn, timeOff):return 1 
-    if playNote(71, timeOn, timeOff):return 1 
-    # this 4 tact
-    if playNote(60, timeOn, timeOff):return 1 
-    if playNote(60, timeOn, timeOff):return 1
-    if playNote(60, timeOn, timeOff):return 1 
-    if playNote(60, timeOn, timeOff):return 1 
-    if playNote(59, timeOn, timeOff):return 1  
-    if playNote(57, timeOn, timeOff):return 1
-              
-
+    i = 0
+    
+    valcesDogsNote = [65, 67, 67, 65, 67, 67,  # this 1 tact 
+    64, 67, 67, 64, 67, 67,   # this 2 tact 
+    62, 71, 71, 62, 71, 71,   # this 3 tact
+    60, 60, 60, 60, 59, 57]   # this 4 tact
+    
+    while i < len(valcesDogsNote):
+        if playNote(valcesDogsNote[i], timeOn, timeOff): 
+            return 1
+        i += 1
+       
 def mario():
     timeOn = 0.2
     timeOff = 0.07
@@ -201,27 +183,6 @@ def mario():
 
     if playNote(60, timeOn, timeOff*12) :return 1
     
-def test():
-    global note, flagUp, flagDown
-    
-    timeOn = 0.12
-    timeOff = 0.07
-    
-    if flagUp == True:
-        note +=1
-        if (note >= 71):
-            note = 71
-            flagUp = False
-            flagDown = True
-      
-    if flagDown == True:
-        note -=1
-        if (note <= 36):
-            note = 36
-            flagUp = True
-            flagDown = False
-    
-    if playNote(note, timeOn, timeOff) :return 1
 
 def imperialMarch():
     timeOn = 0.35
@@ -304,6 +265,28 @@ def imperialMarch():
     if playNote(51, timeOn*0.75, timeOff/2):return 1
     if playNote(58, timeOn/4, timeOff/2)   :return 1
     if playNote(55, timeOn*2, timeOff*2)   :return 1
+    
+def test():
+    global note, flagUp, flagDown
+    
+    timeOn = 0.12
+    timeOff = 0.07
+    
+    if flagUp == True:
+        note +=1
+        if (note >= 71):
+            note = 71
+            flagUp = False
+            flagDown = True
+      
+    if flagDown == True:
+        note -=1
+        if (note <= 36):
+            note = 36
+            flagUp = True
+            flagDown = False
+    
+    if playNote(note, timeOn, timeOff) :return 1
            
 def random():
     random_note = randint(36,71)
@@ -312,7 +295,7 @@ def random():
 def disable():
     SYS_RESET = 0xFF #Системное сообщение - сброс всех устройств https://ccrma.stanford.edu/~craig/articles/linuxmidi/misc/essenmidi.html
     ser.write(bytearray([SYS_RESET, 0, 0])) # Сдвига на 4 и сложения с номером канала нет т.к. системное сообщение
-    time.sleep(0.05)                                    
+    time.sleep(0.1)                                    
        
 GPIO.add_event_detect(2,GPIO.FALLING,callback=button_callback)    
 try:                                    # Пытаемся выполнить следующий код:
