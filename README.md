@@ -29,7 +29,7 @@ sudo crontab -e
 ### Создание MIDI-мелодий
 Написание MIDI-мелодий происходит непосредственно в файле **MainMidi.py** используя функцию *playNote(note, timeOn, timeOff)*, где note - номер ноты от 36 до 71;  timeOn - время звучания в секундах; timeOff - время паузы в секундах (нет звучания). Соотношение нота-номер и нота-время вриведено на рисунке:
 
-<img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/schemes/1677514975394.jpg" width=35% height=25%>
+<img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/schemes/1677514975394.jpg" width=45% height=35%>
 
 ## Видео работы ##
 https://youtu.be/iuJQ5y0yN18

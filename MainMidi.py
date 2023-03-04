@@ -3,7 +3,7 @@
 """
 Script that generates a MIDI signal to the serial port
 Author: Malyshev S.E.(https://github.com/sergey12malyshev)
-Version = '1.0'
+Version = '1.1'
 Created: 24.10.2022
 Updated: see git histiry
 Todo: 
@@ -46,7 +46,7 @@ def button_callback(channel):
             GPIO.output(BUZZ_PIN, False)
         
             melodiNumber = melodiNumber + 1
-            if melodiNumber == 6:
+            if melodiNumber == 8:
                 melodiNumber = 0
         
             print(melodiNumber)
@@ -71,7 +71,67 @@ def playNote(note, timeOnLocal, timeOffLocal):
         oldMelodiNumber = melodiNumber
         return 1
     return 0
+
+# melodi start
+def popcorn_1takt(timeOnLocal, timeOffLocal):
+    i = 0
+    popcorn = [57, 55,  57, 52, 49, 52, 45]   
+    while i < len(popcorn):
+        if playNote(popcorn[i], timeOnLocal, timeOffLocal): 
+            return 1
+        i += 1
+        
+def popcorn_2takt(timeOnLocal, timeOffLocal):
+    i = 0
+    popcorn = [57, 59, 60, 59, 60, 57,  59, 57, 59, 55,  57, 59, 57, 53,  57]  
+    while i < len(popcorn):
+        if playNote(popcorn[i], timeOnLocal, timeOffLocal): 
+            return 1
+        i += 1
+        
+def popcorn_3takt(timeOnLocal, timeOffLocal):
+    i = 0
+    popcorn = [57, 59, 60, 59, 60, 57,  59, 57, 59, 55,  57, 55, 57, 59,  60]  
+    while i < len(popcorn):
+        if playNote(popcorn[i], timeOnLocal, timeOffLocal): 
+            return 1
+        i += 1
+        
+def popcorn():
+    timeOn = 0.095
+    timeOff = 0.135
     
+    if popcorn_1takt(timeOn, timeOff):return 1
+    time.sleep(timeOff*1.5)
+    if popcorn_1takt(timeOn, timeOff):return 1
+    time.sleep(timeOff*1.5)
+    if popcorn_2takt(timeOn, timeOff):return 1
+    time.sleep(timeOff*1.5)
+    if popcorn_1takt(timeOn, timeOff):return 1
+    time.sleep(timeOff*1.5)
+    if popcorn_1takt(timeOn, timeOff):return 1
+    time.sleep(timeOff*1.5)
+    if popcorn_3takt(timeOn, timeOff):return 1
+    time.sleep(timeOff*1.6)
+    
+def mortalKombat():
+    timeOn = 0.2
+    timeOff = 0.07
+    i = 0
+    
+    mortalKombat = [57, 57, 60, 57,  62, 57, 64, 62,   
+    60, 60, 64, 60,  67, 60, 64, 60, 
+    55, 55, 59, 55,  60, 55, 62, 60,   
+    53, 53, 57, 53,  60, 53, 60, 59]
+                    
+    mortalKombat2 = [57, 57, 57, 57, 55, 60,  57, 57, 57, 55, 52,
+    57, 57, 57, 57, 55, 60,  57, 57, 57, 57, 57, 57, 57]
+    
+    while i < len(mortalKombat):
+        if playNote(mortalKombat[i], timeOn, timeOff): 
+            return 1
+        i += 1      
+           
 def valcesDogs():
     timeOn = 0.3
     timeOff = 0.1
@@ -86,7 +146,32 @@ def valcesDogs():
         if playNote(valcesDogsNote[i], timeOn, timeOff): 
             return 1
         i += 1
-       
+        
+def mario_tact1(timeOn, timeOff):
+    if playNote(67, timeOn/2, timeOff)  :return 1
+    if playNote(66, timeOn/2, timeOff)  :return 1
+    if playNote(65, timeOn/2, timeOff)  :return 1
+    if playNote(63, timeOn/2, timeOff*2):return 1
+    if playNote(64, timeOn/2, timeOff*2):return 1
+
+def mario_tact2(timeOn, timeOff):
+    if playNote(56, timeOn/2, timeOff)  :return 1
+    if playNote(57, timeOn/2, timeOff)  :return 1
+    if playNote(60, timeOn/2, timeOff*2):return 1
+    if playNote(57, timeOn/2, timeOff)  :return 1
+    if playNote(60, timeOn/2, timeOff)  :return 1
+    if playNote(62, timeOn/2, timeOff*4):return 1
+    
+def mario_tact3(timeOn, timeOff):
+    if playNote(60, timeOn, timeOff*2)  :return 1
+    if playNote(55, timeOn/2, timeOff*4):return 1
+    if playNote(52, timeOn, timeOff*2)  :return 1
+    
+    if playNote(57, timeOn/2, timeOff*2):return 1
+    if playNote(59, timeOn/2, timeOff*2):return 1
+    if playNote(58, timeOn/2, timeOff)  :return 1
+    if playNote(57, timeOn, timeOff)    :return 1
+    
 def mario():
     timeOn = 0.2
     timeOff = 0.07
@@ -100,14 +185,7 @@ def mario():
     if playNote(67, timeOn*2, timeOff*2):return 1
     if playNote(55, timeOn*2, timeOff*2):return 1
 
-    if playNote(60, timeOn, timeOff*2)  :return 1
-    if playNote(55, timeOn/2, timeOff*4):return 1
-    if playNote(52, timeOn, timeOff*2)  :return 1
-
-    if playNote(57, timeOn/2, timeOff*2):return 1
-    if playNote(59, timeOn/2, timeOff*2):return 1
-    if playNote(58, timeOn/2, timeOff)  :return 1
-    if playNote(57, timeOn, timeOff)    :return 1
+    if mario_tact3(timeOn, timeOff):     return 1
 
     if playNote(55, timeOn*3/4, timeOff):return 1
     if playNote(64, timeOn*3/4, timeOff):return 1
@@ -121,14 +199,7 @@ def mario():
     if playNote(62, timeOn/2, timeOff)  :return 1
     if playNote(59, timeOn/2, timeOff*4):return 1
 
-    if playNote(60, timeOn, timeOff*2)  :return 1
-    if playNote(55, timeOn/2, timeOff*4):return 1
-    if playNote(52, timeOn, timeOff*2)  :return 1
-
-    if playNote(57, timeOn/2, timeOff*2):return 1
-    if playNote(59, timeOn/2, timeOff*2):return 1
-    if playNote(58, timeOn/2, timeOff)  :return 1
-    if playNote(57, timeOn, timeOff)    :return 1
+    if mario_tact3(timeOn, timeOff):return 1
 
     if playNote(55, timeOn*2/3, timeOff):return 1
     if playNote(64, timeOn*2/3, timeOff):return 1
@@ -142,48 +213,52 @@ def mario():
     if playNote(62, timeOn/2, timeOff)  :return 1
     if playNote(59, timeOn/2, timeOff*8):return 1
 
-    if playNote(67, timeOn/2, timeOff)  :return 1
-    if playNote(66, timeOn/2, timeOff)  :return 1
-    if playNote(65, timeOn/2, timeOff)  :return 1
-    if playNote(63, timeOn/2, timeOff*2):return 1
-    if playNote(64, timeOn/2, timeOff*2):return 1
-
-    if playNote(56, timeOn/2, timeOff)  :return 1
-    if playNote(57, timeOn/2, timeOff)  :return 1
-    if playNote(60, timeOn/2, timeOff*2):return 1
-    if playNote(57, timeOn/2, timeOff)  :return 1
-    if playNote(60, timeOn/2, timeOff)  :return 1
-    if playNote(62, timeOn/2, timeOff*4):return 1
-
-    if playNote(67, timeOn/2, timeOff)  :return 1
-    if playNote(66, timeOn/2, timeOff)  :return 1
-    if playNote(65, timeOn/2, timeOff)  :return 1
-    if playNote(63, timeOn/2, timeOff*2):return 1
-    if playNote(64, timeOn/2, timeOff*2):return 1
+    if mario_tact1(timeOn, timeOff):     return 1
+    if mario_tact2(timeOn, timeOff):     return 1
+    if mario_tact1(timeOn, timeOff):     return 1
 
     if playNote(60, timeOn/2, timeOff*2):return 1
     if playNote(60, timeOn/2, timeOff)  :return 1
     if playNote(60, timeOn, timeOff*8)  :return 1
 
-    if playNote(67, timeOn/2, timeOff)  :return 1
-    if playNote(66, timeOn/2, timeOff)  :return 1
-    if playNote(65, timeOn/2, timeOff)  :return 1
-    if playNote(63, timeOn/2, timeOff*2):return 1
-    if playNote(64, timeOn/2, timeOff*2):return 1
-
-    if playNote(56, timeOn/2, timeOff)  :return 1
-    if playNote(57, timeOn/2, timeOff)  :return 1
-    if playNote(60, timeOn/2, timeOff*2):return 1
-    if playNote(57, timeOn/2, timeOff)  :return 1
-    if playNote(60, timeOn/2, timeOff)  :return 1
-    if playNote(62, timeOn/2, timeOff*4):return 1
+    if mario_tact1(timeOn, timeOff):     return 1
+    if mario_tact2(timeOn, timeOff):     return 1
 
     if playNote(63, timeOn, timeOff*2)  :return 1
     if playNote(62, timeOn/2, timeOff*4):return 1
 
     if playNote(60, timeOn, timeOff*12) :return 1
     
-
+def imperialMarch_tact(timeOn, timeOff):
+    if playNote(67, timeOn, timeOff)       :return 1
+    if playNote(55, timeOn*0.75, timeOff/2):return 1
+    if playNote(55, timeOn/4, timeOff/2)   :return 1
+    if playNote(67, timeOn, timeOff)       :return 1
+    if playNote(66, timeOn*0.75, timeOff/2):return 1
+    if playNote(65, timeOn/4, timeOff/2)   :return 1
+    
+    if playNote(64, timeOn/4, timeOff/2)   :return 1         
+    if playNote(63, timeOn/4, timeOff/2)   :return 1
+    if playNote(64, timeOn/2, timeOff*2)   :return 1
+    if playNote(56, timeOn/2, timeOff/2)   :return 1
+    if playNote(61, timeOn, timeOff)       :return 1
+    if playNote(60, timeOn*0.75, timeOff/2):return 1
+    if playNote(59, timeOn/4, timeOff/2)   :return 1
+    
+    if playNote(58, timeOn/4, timeOff/2)   :return 1       
+    if playNote(57, timeOn/4, timeOff/2)   :return 1
+    if playNote(58, timeOn/2, timeOff*2)   :return 1
+    if playNote(51, timeOn/2, timeOff/2)   :return 1
+    if playNote(54, timeOn, timeOff)       :return 1
+    if playNote(51, timeOn*0.75, timeOff/2):return 1
+    if playNote(54, timeOn/4, timeOff/2)   :return 1
+    
+def imperialMarch_tact2(timeOn, timeOff):
+    if playNote(55, timeOn, timeOff)       :return 1
+    if playNote(51, timeOn*0.75, timeOff/2):return 1
+    if playNote(58, timeOn/4, timeOff/2)   :return 1
+    if playNote(55, timeOn*2, timeOff*2)   :return 1
+    
 def imperialMarch():
     timeOn = 0.35
     timeOff = 0.18
@@ -194,10 +269,7 @@ def imperialMarch():
     if playNote(51, timeOn*0.75, timeOff/2):return 1
     if playNote(58, timeOn/4, timeOff/2)   :return 1
     # this 2 tact
-    if playNote(55, timeOn, timeOff)       :return 1
-    if playNote(51, timeOn*0.75, timeOff/2):return 1
-    if playNote(58, timeOn/4, timeOff/2)   :return 1
-    if playNote(55, timeOn*2, timeOff*2)   :return 1
+    if imperialMarch_tact2(timeOn, timeOff):return 1
     # this 3 tact
     if playNote(62, timeOn, timeOff)       :return 1
     if playNote(62, timeOn, timeOff)       :return 1
@@ -209,63 +281,20 @@ def imperialMarch():
     if playNote(51, timeOn*0.75, timeOff/2):return 1
     if playNote(58, timeOn/4, timeOff/2)   :return 1
     if playNote(55, timeOn*2, timeOff*2)   :return 1
-    # this 5 tact
-    if playNote(67, timeOn, timeOff)       :return 1
-    if playNote(55, timeOn*0.75, timeOff/2):return 1
-    if playNote(55, timeOn/4, timeOff/2)   :return 1
-    if playNote(67, timeOn, timeOff)       :return 1
-    if playNote(66, timeOn*0.75, timeOff/2):return 1
-    if playNote(65, timeOn/4, timeOff/2)   :return 1
-    # this 6 tact
-    if playNote(64, timeOn/4, timeOff/2)   :return 1       
-    if playNote(63, timeOn/4, timeOff/2)   :return 1
-    if playNote(64, timeOn/2, timeOff*2)   :return 1
-    if playNote(56, timeOn/2, timeOff/2)   :return 1
-    if playNote(61, timeOn, timeOff)       :return 1
-    if playNote(60, timeOn*0.75, timeOff/2):return 1
-    if playNote(59, timeOn/4, timeOff/2)   :return 1
-    # this 7 tact
-    if playNote(58, timeOn/4, timeOff/2)   :return 1       
-    if playNote(57, timeOn/4, timeOff/2)   :return 1
-    if playNote(58, timeOn/2, timeOff*2)   :return 1
-    if playNote(51, timeOn/2, timeOff/2)   :return 1
-    if playNote(54, timeOn, timeOff)       :return 1
-    if playNote(51, timeOn*0.75, timeOff/2):return 1
-    if playNote(54, timeOn/4, timeOff/2)   :return 1
+    # this 5 tact and 6 tact and 7 tact
+    if imperialMarch_tact(timeOn, timeOff) :return 1
     # this 8 tact
     if playNote(59, timeOn, timeOff)       :return 1
     if playNote(55, timeOn*0.75, timeOff/2):return 1
     if playNote(59, timeOn/4, timeOff/2)   :return 1
     if playNote(62, timeOn*2, timeOff*2)   :return 1
-    # this 9 tact
-    if playNote(67, timeOn, timeOff)       :return 1
-    if playNote(55, timeOn*0.75, timeOff/2):return 1
-    if playNote(55, timeOn/4, timeOff/2)   :return 1
-    if playNote(67, timeOn, timeOff)       :return 1
-    if playNote(66, timeOn*0.75, timeOff/2):return 1
-    if playNote(65, timeOn/4, timeOff/2)   :return 1
-    # this 10 tact
-    if playNote(64, timeOn/4, timeOff/2)   :return 1         
-    if playNote(63, timeOn/4, timeOff/2)   :return 1
-    if playNote(64, timeOn/2, timeOff*2)   :return 1
-    if playNote(56, timeOn/2, timeOff/2)   :return 1
-    if playNote(61, timeOn, timeOff)       :return 1
-    if playNote(60, timeOn*0.75, timeOff/2):return 1
-    if playNote(59, timeOn/4, timeOff/2)   :return 1
-    # this 11 tact
-    if playNote(58, timeOn/4, timeOff/2)   :return 1       
-    if playNote(57, timeOn/4, timeOff/2)   :return 1
-    if playNote(58, timeOn/2, timeOff*2)   :return 1
-    if playNote(51, timeOn/2, timeOff/2)   :return 1
-    if playNote(54, timeOn, timeOff)       :return 1
-    if playNote(51, timeOn*0.75, timeOff/2):return 1
-    if playNote(54, timeOn/4, timeOff/2)   :return 1
+    # this 9 and 10 and 11 tact
+    if imperialMarch_tact(timeOn, timeOff) :return 1
     # this 12 tact
-    if playNote(55, timeOn, timeOff)       :return 1
-    if playNote(51, timeOn*0.75, timeOff/2):return 1
-    if playNote(58, timeOn/4, timeOff/2)   :return 1
-    if playNote(55, timeOn*2, timeOff*2)   :return 1
-    
+    if imperialMarch_tact2(timeOn, timeOff):return 1
+
+# melodi end
+
 def test():
     global note, flagUp, flagDown
     
@@ -290,7 +319,7 @@ def test():
            
 def random():
     random_note = randint(36,71)
-    playNote(random_note, 0.12, 0.07)
+    playNote(random_note, 0.5, 0.05)
        
 def disable():
     SYS_RESET = 0xFF #Системное сообщение - сброс всех устройств https://ccrma.stanford.edu/~craig/articles/linuxmidi/misc/essenmidi.html
@@ -301,7 +330,7 @@ GPIO.add_event_detect(2,GPIO.FALLING,callback=button_callback)
 try:                                    # Пытаемся выполнить следующий код:
     while True:
         if (melodiNumber == 0):
-            valcesDogs()
+            mortalKombat() 
         else:
             if (melodiNumber == 1):
                 mario()
@@ -310,12 +339,18 @@ try:                                    # Пытаемся выполнить с
                     imperialMarch()
                 else:
                     if (melodiNumber == 3):
-                        test()
+                        valcesDogs()
                     else:
                         if (melodiNumber == 4):
-                            random()
+                            popcorn()
                         else:
-                            disable()
+                            if (melodiNumber == 5):
+                                test()
+                            else:
+                                if (melodiNumber == 6):
+                                    random()
+                                else:
+                                    disable()
 
 except:                                 # Если код выполнить не удалось
                                         #   (поднято исключение или
