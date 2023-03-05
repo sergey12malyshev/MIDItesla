@@ -173,12 +173,11 @@ def mario():
         if playNote(60, timeOn, timeOff*2)  :return 1
         if playNote(55, timeOn/2, timeOff*4):return 1
         if playNote(52, timeOn, timeOff*2)  :return 1
-    
-    if playNote(57, timeOn/2, timeOff*2):return 1
-    if playNote(59, timeOn/2, timeOff*2):return 1
-    if playNote(58, timeOn/2, timeOff)  :return 1
-    if playNote(57, timeOn, timeOff)    :return 1
-    
+        if playNote(57, timeOn/2, timeOff*2):return 1
+        if playNote(59, timeOn/2, timeOff*2):return 1
+        if playNote(58, timeOn/2, timeOff)  :return 1
+        if playNote(57, timeOn, timeOff)    :return 1
+
     if playNote(64, timeOn/2, timeOff)  :return 1
     if playNote(64, timeOn/2, timeOff*2):return 1
     if playNote(64, timeOn/2, timeOff*2):return 1
@@ -304,14 +303,14 @@ def test_ladderNotes():
     timeOn = 0.12
     timeOff = 0.07
     
-    if flagUp == True:
+    if flagUp:
         note +=1
         if (note >= 71):
             note = 71
             flagUp = False
             flagDown = True
       
-    if flagDown == True:
+    if flagDown:
         note -=1
         if (note <= 36):
             note = 36
