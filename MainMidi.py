@@ -14,11 +14,14 @@ import RPi.GPIO as GPIO
 from random import randint                        
 
 # Global variable start:
+ser = serial.Serial('/dev/ttyS0', baudrate=31250)
+
 BUZZ_PIN = 17                                                                        
 BUTTON_PIN = 2                                    
 
-ser = serial.Serial('/dev/ttyS0', baudrate=31250)
-note = 36 #max 71 min 36
+NOTE_MAX = 71
+NOTE_MIN = 36
+note = NOTE_MIN
 
 flagUp = True
 flagDown = False
@@ -33,17 +36,15 @@ GPIO.setup(BUZZ_PIN,GPIO.OUT)
 GPIO.output(BUZZ_PIN, False)
 
 GPIO.setup(BUTTON_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP) # Устанавливаем вывод в режим "вход" c подтяжкой
-
+ 
 def button_callback(channel):
     global melodyNumber
         
     if GPIO.input(BUTTON_PIN) == GPIO.LOW:
         time.sleep(0.09)
         if GPIO.input(BUTTON_PIN) == GPIO.LOW:
-            GPIO.output(BUZZ_PIN, True)
-            time.sleep(0.02)
-            GPIO.output(BUZZ_PIN, False)
-        
+            buzzerDrive(0.02)
+    
             melodyNumber = melodyNumber + 1
             if melodyNumber == 8:
                 melodyNumber = 0
@@ -51,7 +52,11 @@ def button_callback(channel):
             print(f"Set melody: {melodyNumber}")
     print("Button was pushed!")
     
-
+def buzzerDrive(timeSleep):
+     GPIO.output(BUZZ_PIN, True)
+     time.sleep(timeSleep)
+     GPIO.output(BUZZ_PIN, False)    
+    
 def playNote(note: int, timeOnLocal: float, timeOffLocal: float):
     global melodyNumber, oldmelodyNumber
     
@@ -60,6 +65,12 @@ def playNote(note: int, timeOnLocal: float, timeOffLocal: float):
     velocity = 100 # сила нажатия клавиши, interrupter её не воспринимает (должна быть больше 0)
     channel = 2    # this represents channel 
     
+    def controlInputNotes():
+        if note > NOTE_MAX or note < NOTE_MIN:
+            print("ERROR value input note")
+            buzzerDrive(0.6)
+            
+    controlInputNotes()    
     ser.write(bytearray([(NOTE_ON << 4) | channel, note, velocity]))
     time.sleep(timeOnLocal)
     ser.write(bytearray([(NOTE_OFF << 4) | channel, note, velocity]))
@@ -72,6 +83,11 @@ def playNote(note: int, timeOnLocal: float, timeOffLocal: float):
         return 1
     return 0
 
+def resetMidi():
+    SYS_RESET = 0xFF #Системное сообщение - сброс всех устройств https://ccrma.stanford.edu/~craig/articles/linuxmidi/misc/essenmidi.html
+    ser.write(bytearray([SYS_RESET, 0, 0])) # Сдвига на 4 и сложения с номером канала нет т.к. системное сообщение
+    time.sleep(0.1)
+    
 # melody functions start
 def popcorn():
     timeOn = 0.095
@@ -305,15 +321,15 @@ def test_ladderNotes():
     
     if flagUp:
         note +=1
-        if (note >= 71):
-            note = 71
+        if (note >= NOTE_MAX):
+            note = NOTE_MAX
             flagUp = False
             flagDown = True
       
     if flagDown:
         note -=1
-        if (note <= 36):
-            note = 36
+        if (note <= NOTE_MIN):
+            note = NOTE_MIN
             flagUp = True
             flagDown = False
     
@@ -323,12 +339,7 @@ def randomNotes():
     random_note = randint(36,71)
     playNote(random_note, 0.5, 0.05)
 # melody functions end
-       
-def disable():
-    SYS_RESET = 0xFF #Системное сообщение - сброс всех устройств https://ccrma.stanford.edu/~craig/articles/linuxmidi/misc/essenmidi.html
-    ser.write(bytearray([SYS_RESET, 0, 0])) # Сдвига на 4 и сложения с номером канала нет т.к. системное сообщение
-    time.sleep(0.1)                                    
-       
+             
 GPIO.add_event_detect(2, GPIO.FALLING, callback = button_callback)    
 try:                                    # Пытаемся выполнить следующий код:
     while True:
@@ -349,11 +360,10 @@ try:                                    # Пытаемся выполнить с
         elif (mN == 6):
             randomNotes()
         else:
-            disable()
+            resetMidi()
 
-except:                                 # Если код выполнить не удалось
-                                        #   (поднято исключение или
-                                        #    другое прерывание выполнения)
+except:                                 #   Если код выполнить не удалось
+                                        #   (поднято исключение или другое прерывание выполнения)
     GPIO.cleanup()                      #   Возвращаем выводы в
                                         #   исходное состояние.
     print("Программа завершена, "       #   Выводим сообщение.
