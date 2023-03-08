@@ -31,6 +31,13 @@ sudo crontab -e
 
 <img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/schemes/1677514975394.jpg" width=45% height=35%>
 
+Доступные мелодии:
+- Gershon Kingsley - Popcorn
+- Super Mario Song
+- Mortal Kombat Theme Song
+- Valces Dogs melody
+- Star Wars - The Imperial March
+
 ## Видео работы ##
 https://youtu.be/iuJQ5y0yN18
 
