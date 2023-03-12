@@ -2,5 +2,5 @@
 
 cd /home/pi/Desktop
 
-python MainMidi.py &
+python3 MainMidi.py &
 python lcd1602notButton.py &
