@@ -1,6 +1,5 @@
 #  MBTechWorks.com 2016
 #  Control an LCD 1602 display from Raspberry Pi with Python programming
-# Script update 2022, Malyshev S.E.
 
 #!/usr/bin/python
 
@@ -27,7 +26,7 @@ import time
 import datetime #  m.s for system data and time
 
 import sys, select, termios, os
-from gpiozero import Button, LoadAverage,CPUTemperature
+from gpiozero import LoadAverage,CPUTemperature
 
 
 # GPIO to LCD mapping
@@ -46,7 +45,7 @@ LCD_LINE_1 = 0x80 # LCD memory location for 1st line
 LCD_LINE_2 = 0xC0 # LCD memory location 2nd line
 
 BUZZ = 17
-button = Button(2)
+
 # Define main program code
 def main():
   
@@ -73,7 +72,8 @@ def main():
   cpu_str_old = 0
   
   while True:
-
+      
+    time.sleep(0.3)
 #and the access its now method simpler
     now = datetime.datetime.now()
     str_now = str(now)
@@ -99,14 +99,7 @@ def main():
       lcd_text(load +"  t:"+ cpu_str,LCD_LINE_1)
       lcd_text(str_now ,LCD_LINE_2)
       print("now")
-    
-    if button.is_pressed:
-      time.sleep(0.07)
-      if button.is_pressed:
-        print("End")
-        #break 
-          
-    time.sleep(0.1)
+ 
 # End of main program code
 
 

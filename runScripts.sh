@@ -1,6 +1,6 @@
-# скрипт для запуске при старте платы двух питоновских скриптов в скрытом режиме
+#Run two scripts
 
-cd /home/pi/Desktop
+echo "Run Scripts"
+python3 /home/pi/Desktop/MainMidi.py &
+python3 /home/pi/Desktop/lcd1602.py &
 
-python3 MainMidi.py &
-python lcd1602notButton.py &

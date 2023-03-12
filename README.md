@@ -20,15 +20,21 @@ Cхема электрическая принципиальная КТ (прив
 ## Программная реализация (Software) ###
 Представляет собой python-скрипты выполняющиеся на Raspberry Pi B3:
 * **MainMidi.py** - python скрипт генерирующий MIDI последовательности в serial-порт raspberry pi. Осуществляет переключение мелодий путём опроса кнопки.
-* **lcd1602notButton.py** - python скрипт осуществляющий вывод информации о состоянии raspberry на LCD экран 1602 (в проекте опционален).
+* **lcd1602.py** - python скрипт осуществляющий вывод информации о состоянии raspberry на LCD экран 1602 (в проекте опционален).
+* **runScripts.sh** - shell скрипт необходим для запуска скриптов MainMidi.py и lcd1602notButton.py в скрытом режиме при старте системы.
 Запуск скрипта runScripts.sh прописан в системном файле crontab. Для открытия файла необходимо набрать:
 ```bash
 sudo crontab -e
 ```
 В файле добавить запись:
 ```bash
-@reboot /home/pi/Desktop/MainMidi.py
-@reboot /home/pi/Desktop/lcd1602.py
+@reboot /home/pi/Desktop/runScripts.sh
+```
+Второй вариант запуска: 
+в crontab файле добавить запись
+```bash
+@reboot python3 /home/pi/Desktop/MainMidi.py
+@reboot python /home/pi/Desktop/lcd1602.py
 ```
 ### Создание MIDI-мелодий
 Написание MIDI-мелодий происходит непосредственно в файле **MainMidi.py** используя функцию *playNote(note, timeOn, timeOff)*, где note - номер ноты от 36 до 71;  timeOn - время звучания в секундах; timeOff - время паузы в секундах (нет звучания). Соотношение нота-номер и нота-время вриведено на рисунке:
