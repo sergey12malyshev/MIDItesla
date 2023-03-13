@@ -3,18 +3,18 @@ MIDI Tesla Coil Controller
 
 Программно-аппаратный проект музыкальной катушки Тесла построенной по топологии SSTC полумост. Состоит из непосредсвенно катушки Тесла, MIDI-контроллера состоящего из прерывателя bsvi на Atmega8 и микрокомпьютера Raspberry Pi 3B генерирующего MIDI мелодии.
 
-<img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/1677242053874.jpg" width=15% height=15%> <img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/1677242053886.jpg" width=15% height=15%> 
+<img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/1677242053874.jpg" width=20% height=20%> <img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/1677242053886.jpg" width=20% height=20%> 
 
-<img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/1677241838375.jpg" width=15% height=15%> <img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/1677241838365.jpg" width=15% height=15%>
+<img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/1677241838375.jpg" width=20% height=20%> <img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/1677241838365.jpg" width=20% height=20%>
 
 ### Аппаратная реализация (Hardware) ###
 Cтруктурная схема всего комплекса:
 
-<img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/schemes/Cхема_структурная.BMP" width=30% height=55%>
+<img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/schemes/Cхема_структурная.BMP" width=35% height=60%>
 
 Cхема электрическая принципиальная КТ (приведена в директории shemes):
 
-<img src="https://github.com/sergey12malyshev/MIDItesla/blob/master/schemes/%D0%A1%D1%85%D0%B5%D0%BC%D0%B0%20%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%D0%9A%D0%A2.BMP" width=35% height=35%>
+<img src="https://github.com/sergey12malyshev/MIDItesla/blob/master/schemes/%D0%A1%D1%85%D0%B5%D0%BC%D0%B0%20%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%D0%9A%D0%A2.BMP" width=40% height=40%>
 
 
 ## Программная реализация (Software) ###
