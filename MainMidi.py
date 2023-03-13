@@ -4,6 +4,7 @@
 Script that generates a MIDI signal to the serial port
 Author: Malyshev S.E.(https://github.com/sergey12malyshev)
 Version = '1.1'
+Python version: 3.7.3
 Created: 24.10.2022
 Updated: see git histiry
 Todo: 
@@ -30,7 +31,7 @@ melodyNumber = 0
 oldmelodyNumber = 0
 # Global variable end
 
-GPIO.setwarnings(False)                          #disable warnings 
+GPIO.setwarnings(False)                          # Disable warnings 
 GPIO.setmode(GPIO.BCM)       
 GPIO.setup(BUZZ_PIN,GPIO.OUT)
 GPIO.output(BUZZ_PIN, False)
@@ -53,9 +54,9 @@ def button_callback(channel):
     print("Button was pushed!")
     
 def buzzerDrive(timeSleep):
-     GPIO.output(BUZZ_PIN, True)
-     time.sleep(timeSleep)
-     GPIO.output(BUZZ_PIN, False)    
+    GPIO.output(BUZZ_PIN, True)
+    time.sleep(timeSleep)
+    GPIO.output(BUZZ_PIN, False)    
     
 def playNote(note: int, timeOnLocal: float, timeOffLocal: float):
     global melodyNumber, oldmelodyNumber
@@ -84,11 +85,11 @@ def playNote(note: int, timeOnLocal: float, timeOffLocal: float):
     return 0
 
 def resetMidi():
-    SYS_RESET = 0xFF #Системное сообщение - сброс всех устройств https://ccrma.stanford.edu/~craig/articles/linuxmidi/misc/essenmidi.html
+    SYS_RESET = 0xFF # Системное сообщение - сброс всех устройств https://ccrma.stanford.edu/~craig/articles/linuxmidi/misc/essenmidi.html
     ser.write(bytearray([SYS_RESET, 0, 0])) # Сдвига на 4 и сложения с номером канала нет т.к. системное сообщение
     time.sleep(0.1)
     
-# melody functions start
+# Melody functions start
 def popcorn():
     timeOn = 0.095
     timeOff = 0.135
@@ -338,7 +339,7 @@ def test_ladderNotes():
 def randomNotes():
     random_note = randint(36,71)
     playNote(random_note, 0.5, 0.05)
-# melody functions end
+# Melody functions end
              
 GPIO.add_event_detect(2, GPIO.FALLING, callback = button_callback)    
 try:                                    # Пытаемся выполнить следующий код:
@@ -366,7 +367,7 @@ except:                                 #   Если код выполнить �
                                         #   (поднято исключение или другое прерывание выполнения)
     GPIO.cleanup()                      #   Возвращаем выводы в
                                         #   исходное состояние.
-    print("Программа завершена, "       #   Выводим сообщение.
-          "выводы GPIO возвращены "     #
-          "в исходное состояние.")      #
+    print("Программа завершена, "        
+          "выводы GPIO возвращены "     
+          "в исходное состояние.")      
         

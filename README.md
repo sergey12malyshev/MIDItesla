@@ -30,11 +30,11 @@ sudo crontab -e
 ```bash
 @reboot /home/pi/Desktop/runScripts.sh
 ```
-Второй вариант запуска: 
+Второй вариант запуска (вместо runScripts.sh): 
 в crontab файле добавить запись
 ```bash
-@reboot python3 /home/pi/Desktop/MainMidi.py
-@reboot python /home/pi/Desktop/lcd1602.py
+@reboot python3 /home/pi/Desktop/MainMidi.py &
+@reboot python3 /home/pi/Desktop/lcd1602.py &
 ```
 ### Создание MIDI-мелодий
 Написание MIDI-мелодий происходит непосредственно в файле **MainMidi.py** используя функцию *playNote(note, timeOn, timeOff)*, где note - номер ноты от 36 до 71;  timeOn - время звучания в секундах; timeOff - время паузы в секундах (нет звучания). Соотношение нота-номер и нота-время вриведено на рисунке:
