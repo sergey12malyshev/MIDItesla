@@ -12,7 +12,7 @@ Cтруктурная схема всего комплекса:
 
 <img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/schemes/Cхема_структурная.BMP" width=37% height=57%>
 
-Cхема электрическая принципиальная трвнсформатора Тесла(приведена в директории shemes):
+Cхема электрическая принципиальная трансформатора Тесла(приведена в директории shemes):
 
 <img src="https://github.com/sergey12malyshev/MIDItesla/blob/master/schemes/%D0%A1%D1%85%D0%B5%D0%BC%D0%B0%20%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%D0%9A%D0%A2.BMP" width=60% height=60%>
 
