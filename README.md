@@ -14,11 +14,11 @@ Cтруктурная схема всего комплекса:
 
 Cхема электрическая принципиальная трвнсформатора Тесла(приведена в директории shemes):
 
-<img src="https://github.com/sergey12malyshev/MIDItesla/blob/master/schemes/%D0%A1%D1%85%D0%B5%D0%BC%D0%B0%20%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%D0%9A%D0%A2.BMP" width=55% height=55%>
+<img src="https://github.com/sergey12malyshev/MIDItesla/blob/master/schemes/%D0%A1%D1%85%D0%B5%D0%BC%D0%B0%20%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%D0%9A%D0%A2.BMP" width=60% height=60%>
 
-Схема подключения MIDI OUT
+Схема подключения MIDI OUT и схема подключения LCD 1602:
 
-<img src="https://github.com/sergey12malyshev/MIDItesla/blob/master/schemes/Untitled%20Sketch%202_bb.png" width=30% height=30%>
+<img src="https://github.com/sergey12malyshev/MIDItesla/blob/master/schemes/Untitled%20Sketch%202_bb.png" width=30% height=30%>     <img src="https://github.com/sergey12malyshev/MIDItesla/blob/master/schemes/Untitled%20Sketch%203_bb.png" width=45% height=45%>
 
 
 ## Программная реализация (Software) ###
