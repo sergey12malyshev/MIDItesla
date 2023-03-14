@@ -10,11 +10,15 @@ MIDI Tesla Coil Controller
 ### Аппаратная реализация (Hardware) ###
 Cтруктурная схема всего комплекса:
 
-<img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/schemes/Cхема_структурная.BMP" width=35% height=55%>
+<img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/schemes/Cхема_структурная.BMP" width=37% height=57%>
 
-Cхема электрическая принципиальная КТ (приведена в директории shemes):
+Cхема электрическая принципиальная трвнсформатора Тесла(приведена в директории shemes):
 
-<img src="https://github.com/sergey12malyshev/MIDItesla/blob/master/schemes/%D0%A1%D1%85%D0%B5%D0%BC%D0%B0%20%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%D0%9A%D0%A2.BMP" width=48% height=48%>
+<img src="https://github.com/sergey12malyshev/MIDItesla/blob/master/schemes/%D0%A1%D1%85%D0%B5%D0%BC%D0%B0%20%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%D0%9A%D0%A2.BMP" width=55% height=55%>
+
+Схема подключения MIDI OUT
+
+<img src="https://github.com/sergey12malyshev/MIDItesla/blob/master/schemes/Untitled%20Sketch%202_bb.png" width=30% height=30%>
 
 
 ## Программная реализация (Software) ###
@@ -60,6 +64,7 @@ https://youtu.be/iuJQ5y0yN18
 * https://teslafon.ru/techno/calcs - калькулятор для расчёта резонансного трансформатора
 * https://www.loneoceans.com/labs/ud27/ - Universal DRSSTC Tesla Coil Driver 2.7 Rev C
 * https://www.osaelectronics.com/learn/setting-up-raspberry-pi-for-midi/ - работа с midi на raspberry
+* https://www.midi.org/specifications-old/item/midi-din-electrical-specification - спецификация аппаратного уровня MIDI
 
 ### Удалённое управление
 VNC Viewer: http://wiki.amperka.ru/rpi:installation:vnc
