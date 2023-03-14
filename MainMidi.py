@@ -5,6 +5,7 @@ Script that generates a MIDI signal to the serial port
 Author: Malyshev S.E.(https://github.com/sergey12malyshev)
 Version = '1.1'
 Python version: 3.7.3
+HW: Pi Model 3B
 Created: 24.10.2022
 Updated: see git histiry
 Todo: 
