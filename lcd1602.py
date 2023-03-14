@@ -6,6 +6,7 @@ Authors: Malyshev S.E.(https://github.com/sergey12malyshev),
 MBTechWorks.com https://www.mbtechworks.com/projects/drive-an-lcd-16x2-display-with-raspberry-pi.html
 Version = '1.1'
 Python version: 2.7.16
+HW: Pi Model 3B, LCD 1602 module (HD44780, 5V)
 Created: 2022
 Updated: see git histiry
 Todo: 
