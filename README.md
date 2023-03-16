@@ -7,21 +7,7 @@ MIDI Tesla Coil Controller
 
 <img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/1677241838375.jpg" width=19% height=19%> <img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/1677241838365.jpg" width=20% height=20%>
 
-### Аппаратная реализация (Hardware) ###
-Cтруктурная схема всего комплекса:
-
-<img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/schemes/Cхема_структурная.BMP" width=37% height=57%>
-
-Cхема электрическая принципиальная трансформатора Тесла(приведена в директории shemes):
-
-<img src="https://github.com/sergey12malyshev/MIDItesla/blob/master/schemes/%D0%A1%D1%85%D0%B5%D0%BC%D0%B0%20%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%D0%9A%D0%A2.BMP" width=60% height=60%>
-
-Схема подключения MIDI OUT и схема подключения LCD 1602:
-
-<img src="https://github.com/sergey12malyshev/MIDItesla/blob/master/schemes/Untitled%20Sketch%202_bb.png" width=30% height=30%>     <img src="https://github.com/sergey12malyshev/MIDItesla/blob/master/schemes/Untitled%20Sketch%203_bb.png" width=45% height=45%>
-
-
-## Программная реализация (Software) ###
+## Программная реализация (Software) ##
 Представляет собой python-скрипты выполняющиеся на Raspberry Pi B3:
 * **MainMidi.py** - python скрипт генерирующий MIDI последовательности в serial-порт raspberry pi. Осуществляет переключение мелодий путём опроса кнопки.
 * **lcd1602.py** - python скрипт осуществляющий вывод информации о состоянии raspberry на LCD экран 1602 (в проекте опционален).
@@ -40,7 +26,20 @@ crontab -e
 @reboot python3 /home/pi/Desktop/MainMidi.py &
 @reboot python3 /home/pi/Desktop/lcd1602.py &
 ```
-### Создание MIDI-мелодий (Creating MIDI tunes)
+## Аппаратная реализация (Hardware) ##
+Cтруктурная схема всего комплекса:
+
+<img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/schemes/Cхема_структурная.BMP" width=37% height=57%>
+
+Cхема электрическая принципиальная трансформатора Тесла(приведена в директории shemes):
+
+<img src="https://github.com/sergey12malyshev/MIDItesla/blob/master/schemes/%D0%A1%D1%85%D0%B5%D0%BC%D0%B0%20%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%D0%9A%D0%A2.BMP" width=60% height=60%>
+
+Схема подключения MIDI OUT и схема подключения LCD 1602:
+
+<img src="https://github.com/sergey12malyshev/MIDItesla/blob/master/schemes/Untitled%20Sketch%202_bb.png" width=30% height=30%>     <img src="https://github.com/sergey12malyshev/MIDItesla/blob/master/schemes/Untitled%20Sketch%203_bb.png" width=45% height=45%>
+
+## Создание MIDI-мелодий (Creating MIDI tunes) ##
 Написание MIDI-мелодий происходит непосредственно в файле **MainMidi.py** используя функцию *playNote(note, timeOn, timeOff)*, где note - номер ноты от 36 до 71;  timeOn - время звучания в секундах; timeOff - время паузы в секундах (нет звучания). Соотношение нота-номер и нота-время приведено на рисунке:
 
 <img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/schemes/1677514975394.jpg" width=45% height=35%>
@@ -65,6 +64,7 @@ https://youtu.be/iuJQ5y0yN18
 * https://www.loneoceans.com/labs/ud27/ - Universal DRSSTC Tesla Coil Driver 2.7 Rev C
 * https://www.osaelectronics.com/learn/setting-up-raspberry-pi-for-midi/ - работа с midi на raspberry
 * https://www.midi.org/specifications-old/item/midi-din-electrical-specification - спецификация аппаратного уровня MIDI
+* http://flyback.org.ru/viewtopic.php?p=4425021#4425021 - ссылка на форум по данной конструкции
 
 ### Удалённое управление
 VNC Viewer: http://wiki.amperka.ru/rpi:installation:vnc
