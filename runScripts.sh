@@ -2,7 +2,7 @@
 
 # Run two python scripts
 # https://habr.com/ru/company/ruvds/blog/325522/ 
-# Обязательно сделать исполняемым: chmod +x ./runScripts.sh
+# Разрешить исполнение скрипта: chmod +x ./runScripts.sh (https://pingvinus.ru/note/chmod)
 # Запуск из CLI: ./runScripts.sh
 
 cd /home/pi/Desktop
