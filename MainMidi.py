@@ -47,7 +47,7 @@ def button_callback(channel):
             buzzerDrive(0.02)
     
             melodyNumber = melodyNumber + 1
-            if melodyNumber == 9:
+            if melodyNumber == 10:
                 melodyNumber = 0
         
             print(f"Set melody: {melodyNumber}")
@@ -320,29 +320,43 @@ def missionImpossible():
     i = 0
     
     def tact1():
-        playNote(52, timeOn, timeOff * 2)  
-        playNote(52, timeOn / 2, timeOff * 4)      
-        playNote(55, timeOn, timeOff)    
-        playNote(57, timeOn, timeOff)    
+        playNote(52 + 3, timeOn, timeOff * 2)  
+        playNote(52 + 3, timeOn / 2, timeOff * 4)      
+        playNote(55 + 3, timeOn, timeOff)    
+        playNote(57 + 3, timeOn, timeOff)    
     
-        playNote(52, timeOn, timeOff * 2)  
-        playNote(52, timeOn / 2, timeOff * 4)  
-        playNote(50, timeOn, timeOff)    
-        playNote(51, timeOn, timeOff)    
+        playNote(52 + 3, timeOn, timeOff * 2)  
+        playNote(52 + 3, timeOn / 2, timeOff * 4)  
+        playNote(50 + 3, timeOn, timeOff)    
+        playNote(51 + 3, timeOn, timeOff)    
     
     def solo1():
-        playNote(71, timeOn / 2, timeOff)    
+        playNote(70, timeOn / 2, timeOff)    
         playNote(67, timeOn / 2, timeOff)    
         playNote(62, timeOn * 4, timeOff)    
-        playNote(55, timeOn, timeOff)      
-        playNote(57, timeOn, timeOff)      
+        playNote(55 + 3, timeOn, timeOff)      
+        playNote(57 + 3, timeOn, timeOff)      
     
     def solo2():
-        playNote(71, timeOn / 2, timeOff)    
+        playNote(70, timeOn / 2, timeOff)    
+        playNote(67, timeOn / 2, timeOff)    
+        playNote(61, timeOn * 4, timeOff)    
+        playNote(53, timeOn, timeOff)      
+        playNote(54, timeOn, timeOff)
+        
+    def solo3():
+        playNote(70, timeOn / 2, timeOff)    
         playNote(67, timeOn / 2, timeOff)    
         playNote(60, timeOn * 4, timeOff)    
-        playNote(55, timeOn, timeOff)      
-        playNote(57, timeOn, timeOff)      
+        playNote(58, timeOn, timeOff)      
+        playNote(60, timeOn, timeOff)
+        
+    def solo4():
+        playNote(58, timeOn / 2, timeOff)    
+        playNote(60, timeOn, timeOff)    
+        playNote(55, timeOn + (timeOn / 2), timeOff)    
+        playNote(54, timeOn, timeOff)      
+        playNote(53, timeOn, timeOff * 4) 
         
     while i < 8: 
         playNote(62, 0.1, 0.01)
@@ -353,22 +367,39 @@ def missionImpossible():
     playNote(66, timeOn / 2, timeOff / 2)
     
     tact1()
-    tact1()
-    
+    tact1() 
     solo1()
-    playNote(71, timeOn / 2, timeOff)
-    playNote(67, timeOn / 2, timeOff)
-    playNote(61, timeOn * 4, timeOff)
-    playNote(50, timeOn, timeOff)
-    playNote(51, timeOn, timeOff)
     solo2()
-    playNote(59, timeOn / 2, timeOff)
-    playNote(60, timeOn / 2, timeOff * 2)
-    playNote(52, timeOn, timeOff * 2)  
-    playNote(52, timeOn / 2, timeOff * 4)  
-    playNote(50, timeOn, timeOff)    
-    playNote(51, timeOn, timeOff*20)  
-
+    solo3()
+    solo4()
+    
+    
+def omen():
+    timeOn = 0.29
+    timeOff = 0.1
+    
+    def oneTact():
+        playNote(59, timeOn + (timeOn / 2), timeOff)
+        playNote(70,timeOn / 2, timeOff)
+        playNote(71, timeOn / 2, timeOff)
+        playNote(70, timeOn / 2, timeOff)
+        playNote(71, timeOn / 2, timeOff)
+        playNote(70, timeOn / 2, timeOff)
+        
+    oneTact()
+    playNote(62, timeOn + (timeOn / 2), timeOff)
+    playNote(61, timeOn / 2, timeOff)
+    playNote(62, timeOn / 2, timeOff)
+    playNote(61, timeOn / 2, timeOff)
+    playNote(62, timeOn / 2, timeOff)
+    playNote(66, timeOn / 2, timeOff)
+    oneTact()
+    playNote(59, timeOn + (timeOn / 2), timeOff)
+    playNote(70, timeOn / 2, timeOff)
+    playNote(71, timeOn / 2, timeOff)
+    playNote(70, timeOn / 2, timeOff)
+    playNote(71, timeOn / 2, timeOff)
+    playNote(70, timeOn / 2, timeOff*1.2)
     
 def test_ladderNotes():
     global note, flagUp, flagDown
@@ -414,10 +445,12 @@ def main():
         elif (mN == 4):
             popcorn()
         elif (mN == 5):
-            missionImpossible()
+            omen()
         elif (mN == 6):
-            test_ladderNotes()
+            missionImpossible()
         elif (mN == 7):
+            test_ladderNotes()
+        elif (mN == 8):
             randomNotes()
         else:
             resetMidi()
@@ -434,3 +467,4 @@ except:
           "выводы GPIO возвращены "     
           "в исходное состояние.")      
         
+ 

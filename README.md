@@ -50,6 +50,9 @@ Cхема электрическая принципиальная трансфо
 - Mortal Kombat Theme Song
 - Valces Dogs melody
 - Star Wars - The Imperial March
+- Mission impossible theme
+- The Prodigy - Omen
+
 
 ## Видео работы ##
 https://youtu.be/iuJQ5y0yN18
