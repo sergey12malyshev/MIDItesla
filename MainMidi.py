@@ -5,7 +5,6 @@ Script that generates a MIDI signal to the serial port
 Author: Malyshev S.E.(https://github.com/sergey12malyshev)
 Version = '1.1'
 Python version: 3.7.3
-HW: Pi Model 3B
 Created: 24.10.2022
 Updated: see git histiry
 Todo: 
@@ -48,7 +47,7 @@ def button_callback(channel):
             buzzerDrive(0.02)
     
             melodyNumber = melodyNumber + 1
-            if melodyNumber == 8:
+            if melodyNumber == 9:
                 melodyNumber = 0
         
             print(f"Set melody: {melodyNumber}")
@@ -315,6 +314,60 @@ def imperialMarch():
     # this 12 tact
     if imperialMarch_tact2(timeOn, timeOff):return 1
 
+def missionImpossible():
+    timeOn = 0.27
+    timeOff = 0.04
+    i = 0
+    
+    def tact1():
+        if playNote(52, timeOn, timeOff*2)  :return 1
+        if playNote(52, timeOn/2, timeOff)  :return 1
+        if playNote(52, timeOn, timeOff)    :return 1
+        if playNote(55, timeOn, timeOff)    :return 1
+        if playNote(57, timeOn, timeOff)    :return 1
+    
+        if playNote(52, timeOn, timeOff*2)  :return 1
+        if playNote(52, timeOn/2, timeOff)  :return 1
+        if playNote(52, timeOn, timeOff)    :return 1
+        if playNote(50, timeOn, timeOff)    :return 1
+        if playNote(51, timeOn, timeOff)    :return 1
+    
+    def solo1():
+        if playNote(71, timeOn/2, timeOff)    :return 1
+        if playNote(67, timeOn/2, timeOff)    :return 1
+        if playNote(62, timeOn*4, timeOff)    :return 1
+        if playNote(55, timeOn, timeOff)      :return 1
+        if playNote(57, timeOn, timeOff)      :return 1
+    
+    def solo2():
+        if playNote(71, timeOn/2, timeOff)    :return 1
+        if playNote(67, timeOn/2, timeOff)    :return 1
+        if playNote(60, timeOn*4, timeOff)    :return 1
+        if playNote(55, timeOn, timeOff)      :return 1
+        if playNote(57, timeOn, timeOff)      :return 1
+        
+    while i < 8: 
+        if playNote(62, 0.1, 0.01): return 1  
+        i += 1     
+    if playNote(62, timeOn, timeOff)  :return 1
+    if playNote(64, timeOn, timeOff)  :return 1
+    if playNote(65, timeOn, timeOff)  :return 1
+    if playNote(66, timeOn, timeOff)  :return 1
+    
+    tact1()
+    tact1()
+    
+    solo1()
+    if playNote(71, timeOn/2, timeOff): return 1
+    if playNote(67, timeOn/2, timeOff): return 1
+    if playNote(61, timeOn*4, timeOff): return 1
+    if playNote(50, timeOn, timeOff):   return 1
+    if playNote(51, timeOn, timeOff):   return 1
+    solo2()
+    if playNote(59, timeOn/1.1, timeOff):   return 1
+    if playNote(60, timeOn/1.1, timeOff*3+timeOn*5):  return 1
+
+    
 def test_ladderNotes():
     global note, flagUp, flagDown
     
@@ -348,18 +401,20 @@ try:                                    # Пытаемся выполнить с
         mN = melodyNumber 
         
         if (mN == 0):
-            mortalKombat() 
+            missionImpossible()
         elif (mN == 1):
             mario()
         elif (mN == 2):
-            imperialMarch()
+            imperialMarch()  
         elif (mN == 3):
             valcesDogs()
         elif (mN == 4):
             popcorn()
         elif (mN == 5):
-            test_ladderNotes()
+            mortalKombat()
         elif (mN == 6):
+            test_ladderNotes()
+        elif (mN == 7):
             randomNotes()
         else:
             resetMidi()
