@@ -6,7 +6,6 @@ Authors: Malyshev S.E.(https://github.com/sergey12malyshev),
 MBTechWorks.com https://www.mbtechworks.com/projects/drive-an-lcd-16x2-display-with-raspberry-pi.html
 Version = '1.1'
 Python version: 2.7.16
-HW: Pi Model 3B, LCD 1602 module (HD44780, 5V)
 Created: 2022
 Updated: see git histiry
 Todo: 
@@ -51,6 +50,7 @@ LCD_CHARS = 16  # Characters per line (16 max)
 LCD_LINE_1 = 0x80  # LCD memory location for 1st line
 LCD_LINE_2 = 0xC0  # LCD memory location 2nd line
 
+DISPLAY_TIME_UPDATE = 0.5
 
 def main():
     GPIO.setwarnings(False)
@@ -70,7 +70,8 @@ def main():
     cpu_str_old = 0
 
     while True:
-        time.sleep(0.3)
+        
+        time.sleep(DISPLAY_TIME_UPDATE)
         # and the access its now method simpler
         now = datetime.datetime.now()
         str_now = str(now)
