@@ -15,7 +15,7 @@ import RPi.GPIO as GPIO
 from random import randint                        
 
 # Global variable start:
-ser = serial.Serial('/dev/ttyS0', baudrate=31250)
+ser = serial.Serial('/dev/ttyS0', baudrate = 31250)
 
 BUZZ_PIN = 17                                                                        
 BUTTON_PIN = 2                                    
@@ -137,14 +137,16 @@ def mortalKombat():
     i = 0
     
     mortalKombat = [
-    57, 57, 60, 57,  62, 57, 64, 62,   
-    60, 60, 64, 60,  67, 60, 64, 60, 
-    55, 55, 59, 55,  60, 55, 62, 60,   
-    53, 53, 57, 53,  60, 53, 60, 59]
+        57, 57, 60, 57,  62, 57, 64, 62,   
+        60, 60, 64, 60,  67, 60, 64, 60, 
+        55, 55, 59, 55,  60, 55, 62, 60,   
+        53, 53, 57, 53,  60, 53, 60, 59
+        ]
                     
     mortalKombat2 = [
-    57, 57, 57, 57, 55, 60,  57, 57, 57, 55, 52,
-    57, 57, 57, 57, 55, 60,  57, 57, 57, 57, 57, 57, 57]
+        57, 57, 57, 57, 55, 60,  57, 57, 57, 55, 52,
+        57, 57, 57, 57, 55, 60,  57, 57, 57, 57, 57, 57, 57
+        ]
     
     while i < len(mortalKombat):
         playNote(mortalKombat[i], timeOn, timeOff)
@@ -157,10 +159,12 @@ def valcesDogs():
     i = 0
     
     valcesDogsNote = [
-    65, 67, 67, 65, 67, 67,   # this 1 tact 
-    64, 67, 67, 64, 67, 67,   # this 2 tact 
-    62, 71, 71, 62, 71, 71,   # this 3 tact
-    60, 60, 60, 60, 59, 57]   # this 4 tact
+        65, 67, 67, 65, 67, 67,   # this 1 tact 
+        64, 67, 67, 64, 67, 67,   # this 2 tact 
+        62, 71, 71, 62, 71, 71,   # this 3 tact
+        60, 60, 60, 60, 59, 57    # this 4 tact
+        ]
+    
     
     while i < len(valcesDogsNote):
         playNote(valcesDogsNote[i], timeOn, timeOff)
@@ -230,7 +234,7 @@ def mario():
     playNote(64, timeOn / 2, timeOff * 2)
     playNote(60, timeOn / 2, timeOff)  
     playNote(62, timeOn / 2, timeOff)  
-    playNote(59, timeOn / 2, timeOff*8)
+    playNote(59, timeOn / 2, timeOff * 8)
 
     mario_tact1(timeOn, timeOff)
     mario_tact2(timeOn, timeOff)
@@ -238,7 +242,7 @@ def mario():
 
     playNote(60, timeOn / 2, timeOff * 2)
     playNote(60, timeOn / 2, timeOff)  
-    playNote(60, timeOn, timeOff*8)  
+    playNote(60, timeOn, timeOff * 8)  
 
     mario_tact1(timeOn, timeOff)
     mario_tact2(timeOn, timeOff)
@@ -246,7 +250,7 @@ def mario():
     playNote(63, timeOn, timeOff * 2)  
     playNote(62, timeOn / 2, timeOff * 4)
 
-    playNote(60, timeOn, timeOff*12) 
+    playNote(60, timeOn, timeOff * 12) 
     
     
 def imperialMarch():
@@ -355,8 +359,9 @@ def missionImpossible():
         playNote(58, timeOn / 2, timeOff)    
         playNote(60, timeOn, timeOff)    
         playNote(55, timeOn + (timeOn / 2), timeOff)    
-        playNote(54, timeOn, timeOff)      
-        playNote(53, timeOn, timeOff * 4) 
+        playNote(52 + 3, timeOn / 2, timeOff * 4)  
+        playNote(50 + 3, timeOn, timeOff)    
+        playNote(51 + 3, timeOn, timeOff)  
         
     while i < 8: 
         playNote(62, 0.1, 0.01)
@@ -372,11 +377,12 @@ def missionImpossible():
     solo2()
     solo3()
     solo4()
+    tact1()
     
     
 def omen():
-    timeOn = 0.29
-    timeOff = 0.1
+    timeOn = 0.33
+    timeOff = 0.05
     
     def oneTact():
         playNote(59, timeOn + (timeOn / 2), timeOff)
@@ -385,7 +391,14 @@ def omen():
         playNote(70, timeOn / 2, timeOff)
         playNote(71, timeOn / 2, timeOff)
         playNote(70, timeOn / 2, timeOff)
-        
+    
+    def twoTact():
+        playNote(59, timeOn / 2, timeOff)
+        playNote(65, timeOn / 2, timeOff)
+        playNote(59, timeOn / 2, timeOff)
+        playNote(62, timeOn / 4, timeOff)
+        playNote(60, timeOn / 4, timeOff)
+         
     oneTact()
     playNote(62, timeOn + (timeOn / 2), timeOff)
     playNote(61, timeOn / 2, timeOff)
@@ -401,6 +414,7 @@ def omen():
     playNote(71, timeOn / 2, timeOff)
     playNote(70, timeOn / 2, timeOff*1.2)
     
+   
 def test_ladderNotes():
     global note, flagUp, flagDown
     
@@ -422,13 +436,15 @@ def test_ladderNotes():
             flagDown = False
     
     playNote(note, timeOn, timeOff)
-           
+ 
+ 
 def randomNotes():
     random_note = randint(36,71)
     playNote(random_note, 0.5, 0.05)
 # Melody functions end
 
 GPIO.add_event_detect(2, GPIO.FALLING, callback = button_callback)
+
 
 def main():
     while True:
@@ -456,11 +472,9 @@ def main():
             resetMidi()
  
 try:                                    
-    
     main()
     
-except:                                
-                                        
+except:                                                                   
     GPIO.cleanup()                      
                                            
     print("Программа завершена, "        
