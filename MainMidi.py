@@ -3,7 +3,7 @@
 """
 Script that generates a MIDI signal to the serial port
 Author: Malyshev S.E.(https://github.com/sergey12malyshev)
-Version = '1.2'
+Version = '1.3'
 Python version: 3.7.3
 Created: 24.10.2022
 Updated: see git histiry
@@ -15,7 +15,7 @@ import RPi.GPIO as GPIO
 from random import randint                        
 
 # Global variable start:
-ser = serial.Serial('/dev/ttyS0', baudrate = 31250)
+ser = serial.Serial('/dev/ttyS0', baudrate=31250)
 
 BUZZ_PIN = 17                                                                        
 BUTTON_PIN = 2                                    
@@ -39,21 +39,18 @@ GPIO.output(BUZZ_PIN, False)
 GPIO.setup(BUTTON_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP) # Устанавливаем вывод в режим "вход" c подтяжкой
 
 def button_callback(channel):
+    # https://sourceforge.net/p/raspberry-gpio-python/wiki/Inputs/
     global melodyNumber
         
-    if GPIO.input(BUTTON_PIN) == GPIO.LOW:
-        time.sleep(0.09)
-        if GPIO.input(BUTTON_PIN) == GPIO.LOW:
-            buzzerDrive(0.02)
-    
-            melodyNumber = melodyNumber + 1
-            if melodyNumber == 10:
-                melodyNumber = 0
+    buzzerDrive(0.02)
+    melodyNumber += 1
+    if melodyNumber == 10:
+        melodyNumber = 0
         
-            print(f"Set melody: {melodyNumber}")
-    print("Button was pushed!")
-    
-    
+    print("Button was pushed!")    
+    print(f"Set melody: {melodyNumber}")
+
+
 def buzzerDrive(timeSleep):
     GPIO.output(BUZZ_PIN, True)
     time.sleep(timeSleep)
@@ -96,9 +93,9 @@ def popcorn():
     timeOn = 0.095
     timeOff = 0.135
     
-    def popcorn_1tact(timeOnLocal, timeOffLocal): # python поддерживает вложенные функции
+    def popcorn_1tact(timeOnLocal, timeOffLocal): 
         i = 0
-        popcorn = [57, 55,  57, 52, 49, 52, 45]   # список нот
+        popcorn = [57, 55,  57, 52, 49, 52, 45]  
         while i < len(popcorn):
             playNote(popcorn[i], timeOnLocal, timeOffLocal)
             i += 1
@@ -443,7 +440,7 @@ def randomNotes():
     playNote(random_note, 0.5, 0.05)
 # Melody functions end
 
-GPIO.add_event_detect(2, GPIO.FALLING, callback = button_callback)
+GPIO.add_event_detect(2, GPIO.FALLING, callback=button_callback, bouncetime=250)
 
 
 def main():
