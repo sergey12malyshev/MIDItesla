@@ -3,6 +3,8 @@ MIDI Tesla Coil Controller
 
 Программно-аппаратный проект музыкальной катушки Тесла построенной по топологии SSTC полумост. Состоит из непосредсвенно катушки Тесла, MIDI-контроллера состоящего из прерывателя bsvi на Atmega8 и микрокомпьютера Raspberry Pi 3B генерирующего MIDI мелодии.
 
+(Hardware-software project of a musical Tesla coil built on the SSTC half-bridge topology. It consists of a Tesla coil itself, a MIDI controller consisting of a bsvi interrupter on an Atmega8 and a Raspberry Pi 3B microcomputer that generates MIDI melodies.)
+
 <img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/1677242053874.jpg" width=18% height=18%> <img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/1677242053886.jpg" width=18% height=18%> 
 
 <img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/1677241838375.jpg" width=19% height=19%> <img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/1677241838365.jpg" width=20% height=20%>
@@ -54,10 +56,10 @@ Cхема электрическая принципиальная трансфо
 - The Prodigy - Omen
 
 
-## Видео работы ##
+## Видео работы (Demo video of work) ##
 https://youtu.be/iuJQ5y0yN18
 
-## Полезная информация
+## Полезная информация (Helpful information)
 * https://bsvi.ru/preryvatel-dlya-drsstc/ - прерыватель использованный для проекта
 * https://bsvi.ru/malleus-maleficarum-apgrejd/ - дизайн SSTC
 * http://teslacoil.ru/katushki-tesla/tranzistornyie-katushki/polumostovaya-sstc/  - дизайн SSTC
@@ -69,7 +71,7 @@ https://youtu.be/iuJQ5y0yN18
 * https://www.midi.org/specifications-old/item/midi-din-electrical-specification - спецификация аппаратного уровня MIDI
 * http://flyback.org.ru/viewtopic.php?p=4425021#4425021 - ссылка на форум по данной конструкции
 
-### Удалённое управление
+### Удалённое управление (Remote control)
 VNC Viewer: http://wiki.amperka.ru/rpi:installation:vnc
 
 Для автоматического запуска VNC запустить скрипт **runVNC.sh**
