@@ -71,6 +71,9 @@ https://youtu.be/iuJQ5y0yN18
 * https://www.midi.org/specifications-old/item/midi-din-electrical-specification - спецификация аппаратного уровня MIDI
 * http://flyback.org.ru/viewtopic.php?p=4425021#4425021 - ссылка на форум по данной конструкции
 
+## Code style
+PEP8
+
 ### Удалённое управление (Remote control)
 VNC Viewer: http://wiki.amperka.ru/rpi:installation:vnc
 
