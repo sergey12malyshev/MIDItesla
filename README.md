@@ -3,7 +3,7 @@ MIDI Tesla Coil Controller
 
 Программно-аппаратный проект музыкальной катушки Тесла построенной по топологии SSTC полумост. Состоит из непосредсвенно катушки Тесла, MIDI-контроллера состоящего из прерывателя bsvi на Atmega8 и микрокомпьютера Raspberry Pi 3B генерирующего MIDI мелодии.
 
-(Hardware-software project of a musical Tesla coil built on the SSTC half-bridge topology. It consists of a Tesla coil itself, a MIDI controller consisting of a bsvi interrupter on an Atmega8 and a Raspberry Pi 3B microcomputer that generates MIDI melodies.)
+Hardware-software project of a musical Tesla coil built on the SSTC half-bridge topology. It consists of a Tesla coil itself, a MIDI controller consisting of a bsvi interrupter on an Atmega8 and a Raspberry Pi 3B microcomputer that generates MIDI melodies.
 
 <img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/1677242053874.jpg" width=18% height=18%> <img src="https://github.com/sergey12malyshev/MIDItesla//raw/master/images/1677242053886.jpg" width=18% height=18%> 
 
@@ -70,6 +70,7 @@ https://youtu.be/iuJQ5y0yN18
 * https://www.osaelectronics.com/learn/setting-up-raspberry-pi-for-midi/ - работа с midi на raspberry
 * https://www.midi.org/specifications-old/item/midi-din-electrical-specification - спецификация аппаратного уровня MIDI
 * http://flyback.org.ru/viewtopic.php?p=4425021#4425021 - ссылка на форум по данной конструкции
+* https://pinout.xyz/ - The Raspberry Pi GPIO pinout guide
 
 ## Code style
 PEP8

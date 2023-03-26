@@ -4,8 +4,9 @@
 The script displays on the display 1602 the system time, temperature and processor load
 Authors: Malyshev S.E.(https://github.com/sergey12malyshev), 
 MBTechWorks.com https://www.mbtechworks.com/projects/drive-an-lcd-16x2-display-with-raspberry-pi.html
-Version = '1.1'
+Version = '1.2'
 Python version: 2.7.16
+Platform: Raspberry PI 3 Model B v1.2
 Created: 2022
 Updated: see git histiry
 Todo: 

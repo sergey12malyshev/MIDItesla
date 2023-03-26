@@ -1,10 +1,11 @@
-#! /usr/bin/env python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Script that generates a MIDI signal to the serial port
 Author: Malyshev S.E.(https://github.com/sergey12malyshev)
 Version = '1.3'
 Python version: 3.7.3
+Platform: Raspberry PI 3 Model B v1.2
 Created: 24.10.2022
 Updated: see git histiry
 Todo: 
@@ -62,8 +63,8 @@ def playNote(note: int, timeOnLocal: float, timeOffLocal: float):
     
     NOTE_OFF = 8   # (0x8n) Комманда выключить ноту
     NOTE_ON = 9    # (0x9n) Комманда включить ноту
-    velocity = 100 # сила нажатия клавиши, interrupter её не воспринимает (должна быть больше 0)
-    channel = 2    # this represents channel 
+    velocity = 100 # Сила нажатия клавиши, interrupter её не воспринимает (должна быть больше 0)
+    channel = 2    # This represents channel 
     
     def controlInputNotes():
         if note > NOTE_MAX or note < NOTE_MIN:
@@ -114,19 +115,22 @@ def popcorn():
             playNote(popcorn[i], timeOnLocal, timeOffLocal)
             i += 1
     
+    def pause():
+        time.sleep(timeOff * 1.5)
+        
     popcorn_1tact(timeOn, timeOff)
-    time.sleep(timeOff * 1.5)
+    pause()
     popcorn_1tact(timeOn, timeOff)
-    time.sleep(timeOff * 1.5)
+    pause()
     popcorn_2tact(timeOn, timeOff)
-    time.sleep(timeOff * 1.5)
+    pause()
     popcorn_1tact(timeOn, timeOff)
-    time.sleep(timeOff * 1.5)
+    pause()
     popcorn_1tact(timeOn, timeOff)
-    time.sleep(timeOff * 1.5)
+    pause()
     popcorn_3tact(timeOn, timeOff)
-    time.sleep(timeOff * 1.6)
-     
+    pause()
+    pause()
      
 def mortalKombat():
     timeOn = 0.2
@@ -171,39 +175,41 @@ def valcesDogs():
 def mario():
     timeOn = 0.2
     timeOff = 0.07
+    timeOnDiv2 = timeOn / 2
+    timeOffMult2 = timeOff * 2
     
     def mario_tact1(timeOn, timeOff):
-         playNote(67, timeOn / 2, timeOff)  
-         playNote(66, timeOn / 2, timeOff)  
-         playNote(65, timeOn / 2, timeOff)  
-         playNote(63, timeOn / 2, timeOff * 2)
-         playNote(64, timeOn / 2, timeOff * 2)
+        playNote(67, timeOnDiv2, timeOff)  
+        playNote(66, timeOnDiv2, timeOff)  
+        playNote(65, timeOnDiv2, timeOff)  
+        playNote(63, timeOnDiv2, timeOffMult2)
+        playNote(64, timeOnDiv2, timeOffMult2)
         
     def mario_tact2(timeOn, timeOff):
-         playNote(56, timeOn / 2, timeOff)  
-         playNote(57, timeOn / 2, timeOff)  
-         playNote(60, timeOn / 2, timeOff * 2)
-         playNote(57, timeOn / 2, timeOff)  
-         playNote(60, timeOn / 2, timeOff)  
-         playNote(62, timeOn / 2, timeOff * 4)
+        playNote(56, timeOnDiv2, timeOff)  
+        playNote(57, timeOnDiv2, timeOff)  
+        playNote(60, timeOnDiv2, timeOffMult2)
+        playNote(57, timeOnDiv2, timeOff)  
+        playNote(60, timeOnDiv2, timeOff)  
+        playNote(62, timeOnDiv2, timeOff * 4)
         
     def mario_tact3(timeOn, timeOff):
-         playNote(60, timeOn, timeOff * 2)  
-         playNote(55, timeOn / 2, timeOff * 4)
-         playNote(52, timeOn, timeOff * 2)  
-         playNote(57, timeOn / 2, timeOff * 2)
-         playNote(59, timeOn / 2, timeOff * 2)
-         playNote(58, timeOn / 2, timeOff)  
-         playNote(57, timeOn, timeOff)    
+        playNote(60, timeOn, timeOffMult2)  
+        playNote(55, timeOnDiv2, timeOff * 4)
+        playNote(52, timeOn, timeOffMult2)  
+        playNote(57, timeOnDiv2, timeOffMult2)
+        playNote(59, timeOnDiv2, timeOffMult2)
+        playNote(58, timeOnDiv2, timeOff)  
+        playNote(57, timeOn, timeOff)    
 
-    playNote(64, timeOn / 2, timeOff)  
-    playNote(64, timeOn / 2, timeOff * 2)
-    playNote(64, timeOn / 2, timeOff * 2)
-    playNote(60, timeOn / 2, timeOff)  
+    playNote(64, timeOnDiv2, timeOff)  
+    playNote(64, timeOnDiv2, timeOffMult2)
+    playNote(64, timeOnDiv2, timeOffMult2)
+    playNote(60, timeOnDiv2, timeOff)  
     playNote(64, timeOn, timeOff)    
 
-    playNote(67, timeOn * 2, timeOff * 2)
-    playNote(55, timeOn * 2, timeOff * 2)
+    playNote(67, timeOn * 2, timeOffMult2)
+    playNote(55, timeOn * 2, timeOffMult2)
 
     mario_tact3(timeOn, timeOff)
 
@@ -211,13 +217,13 @@ def mario():
     playNote(64, timeOn * 3 / 4, timeOff)
     playNote(67, timeOn * 3 / 4, timeOff)
     playNote(69, timeOn, timeOff)    
-    playNote(65, timeOn / 2, timeOff)  
-    playNote(67, timeOn / 2, timeOff * 2)
+    playNote(65, timeOnDiv2, timeOff)  
+    playNote(67, timeOnDiv2, timeOffMult2)
 
-    playNote(64, timeOn / 2, timeOff * 2)
-    playNote(60, timeOn / 2, timeOff)  
-    playNote(62, timeOn / 2, timeOff)  
-    playNote(59, timeOn / 2, timeOff * 4)
+    playNote(64, timeOnDiv2, timeOffMult2)
+    playNote(60, timeOnDiv2, timeOff)  
+    playNote(62, timeOnDiv2, timeOff)  
+    playNote(59, timeOnDiv2, timeOff * 4)
 
     mario_tact3(timeOn, timeOff)
 
@@ -225,27 +231,27 @@ def mario():
     playNote(64, timeOn * 2 / 3, timeOff)
     playNote(67, timeOn * 2 / 3, timeOff)
     playNote(69, timeOn, timeOff)    
-    playNote(65, timeOn / 2, timeOff)  
-    playNote(67, timeOn / 2, timeOff * 2)
+    playNote(65, timeOnDiv2, timeOff)  
+    playNote(67, timeOnDiv2, timeOffMult2)
 
-    playNote(64, timeOn / 2, timeOff * 2)
-    playNote(60, timeOn / 2, timeOff)  
-    playNote(62, timeOn / 2, timeOff)  
-    playNote(59, timeOn / 2, timeOff * 8)
+    playNote(64, timeOnDiv2, timeOffMult2)
+    playNote(60, timeOnDiv2, timeOff)  
+    playNote(62, timeOnDiv2, timeOff)  
+    playNote(59, timeOnDiv2, timeOff * 8)
 
     mario_tact1(timeOn, timeOff)
     mario_tact2(timeOn, timeOff)
     mario_tact1(timeOn, timeOff)
 
-    playNote(60, timeOn / 2, timeOff * 2)
-    playNote(60, timeOn / 2, timeOff)  
+    playNote(60, timeOnDiv2, timeOffMult2)
+    playNote(60, timeOnDiv2, timeOff)  
     playNote(60, timeOn, timeOff * 8)  
 
     mario_tact1(timeOn, timeOff)
     mario_tact2(timeOn, timeOff)
 
-    playNote(63, timeOn, timeOff * 2)  
-    playNote(62, timeOn / 2, timeOff * 4)
+    playNote(63, timeOn, timeOffMult2)  
+    playNote(62, timeOnDiv2, timeOff * 4)
 
     playNote(60, timeOn, timeOff * 12) 
     
@@ -253,62 +259,65 @@ def mario():
 def imperialMarch():
     timeOn = 0.35
     timeOff = 0.18
+    timeOnDiv2 = timeOn / 2
+    timeOnDiv4 = timeOn / 4
+    timeOffDiv2 = timeOff / 2
     
     def imperialMarch_tact(timeOn, timeOff):
         playNote(67, timeOn, timeOff)       
-        playNote(55, timeOn * 0.75, timeOff / 2)
-        playNote(55, timeOn / 4, timeOff / 2)   
+        playNote(55, timeOn * 0.75, timeOffDiv2)
+        playNote(55, timeOnDiv4, timeOffDiv2)   
         playNote(67, timeOn, timeOff)       
-        playNote(66, timeOn * 0.75, timeOff / 2)
-        playNote(65, timeOn / 4, timeOff / 2)   
+        playNote(66, timeOn * 0.75, timeOffDiv2)
+        playNote(65, timeOnDiv4, timeOffDiv2)   
     
-        playNote(64, timeOn / 4, timeOff / 2)            
-        playNote(63, timeOn / 4, timeOff / 2)   
-        playNote(64, timeOn / 2, timeOff * 2)   
-        playNote(56, timeOn / 2, timeOff / 2)   
+        playNote(64, timeOnDiv4, timeOffDiv2)            
+        playNote(63, timeOnDiv4, timeOffDiv2)   
+        playNote(64, timeOnDiv2, timeOff * 2)   
+        playNote(56, timeOnDiv2, timeOffDiv2)   
         playNote(61, timeOn, timeOff)       
-        playNote(60, timeOn * 0.75, timeOff / 2)
-        playNote(59, timeOn / 4, timeOff / 2)   
+        playNote(60, timeOn * 0.75, timeOffDiv2)
+        playNote(59, timeOnDiv4, timeOffDiv2)   
     
-        playNote(58, timeOn / 4, timeOff / 2)          
-        playNote(57, timeOn / 4, timeOff / 2)   
-        playNote(58, timeOn / 2, timeOff * 2)   
-        playNote(51, timeOn / 2, timeOff / 2)   
+        playNote(58, timeOnDiv4, timeOffDiv2)          
+        playNote(57, timeOnDiv4, timeOffDiv2)   
+        playNote(58, timeOnDiv2, timeOff * 2)   
+        playNote(51, timeOnDiv2, timeOffDiv2)   
         playNote(54, timeOn, timeOff)       
-        playNote(51, timeOn * 0.75, timeOff / 2)
-        playNote(54, timeOn / 4, timeOff / 2)   
+        playNote(51, timeOn * 0.75, timeOffDiv2)
+        playNote(54, timeOnDiv4, timeOffDiv2)   
     
     def imperialMarch_tact2(timeOn, timeOff):
         playNote(55, timeOn, timeOff)       
-        playNote(51, timeOn * 0.75, timeOff / 2)
-        playNote(58, timeOn / 4, timeOff / 2)   
+        playNote(51, timeOn * 0.75, timeOffDiv2)
+        playNote(58, timeOnDiv4, timeOffDiv2)   
         playNote(55, timeOn * 2, timeOff * 2)       
         
     # this 1 tact
     playNote(55, timeOn, timeOff)       
     playNote(55, timeOn, timeOff)       
     playNote(55, timeOn, timeOff)       
-    playNote(51, timeOn * 0.75, timeOff / 2)
-    playNote(58, timeOn / 4, timeOff / 2)   
+    playNote(51, timeOn * 0.75, timeOffDiv2)
+    playNote(58, timeOnDiv4, timeOffDiv2)   
     # this 2 tact
     imperialMarch_tact2(timeOn, timeOff)
     # this 3 tact
     playNote(62, timeOn, timeOff)       
     playNote(62, timeOn, timeOff)       
     playNote(62, timeOn, timeOff)       
-    playNote(63, timeOn * 0.75, timeOff / 2)
-    playNote(58, timeOn / 4, timeOff / 2)   
+    playNote(63, timeOn * 0.75, timeOffDiv2)
+    playNote(58, timeOnDiv4, timeOffDiv2)   
     # this 4 tact
     playNote(54, timeOn, timeOff)       
-    playNote(51, timeOn * 0.75, timeOff / 2)
-    playNote(58, timeOn / 4, timeOff / 2)   
+    playNote(51, timeOn * 0.75, timeOffDiv2)
+    playNote(58, timeOnDiv4, timeOffDiv2)   
     playNote(55, timeOn * 2, timeOff * 2)   
     # this 5 tact and 6 tact and 7 tact
     imperialMarch_tact(timeOn, timeOff) 
     # this 8 tact
     playNote(59, timeOn, timeOff)       
-    playNote(55, timeOn * 0.75, timeOff / 2)
-    playNote(59, timeOn / 4, timeOff / 2)   
+    playNote(55, timeOn * 0.75, timeOffDiv2)
+    playNote(59, timeOnDiv4, timeOffDiv2)   
     playNote(62, timeOn * 2, timeOff * 2)   
     # this 9 and 10 and 11 tact
     imperialMarch_tact(timeOn, timeOff) 
@@ -318,55 +327,57 @@ def imperialMarch():
 def missionImpossible():
     timeOn = 0.25
     timeOff = 0.09
+    timeOnDiv2 = timeOn / 2
+    timeOffDiv2 = timeOff / 2
     i = 0
     
     def tact1():
-        playNote(52 + 3, timeOn, timeOff * 2)  
-        playNote(52 + 3, timeOn / 2, timeOff * 4)      
-        playNote(55 + 3, timeOn, timeOff)    
-        playNote(57 + 3, timeOn, timeOff)    
+        playNote(55, timeOn, timeOff * 2)  
+        playNote(55, timeOnDiv2, timeOff * 4)      
+        playNote(58, timeOn, timeOff)    
+        playNote(60, timeOn, timeOff)    
     
-        playNote(52 + 3, timeOn, timeOff * 2)  
-        playNote(52 + 3, timeOn / 2, timeOff * 4)  
-        playNote(50 + 3, timeOn, timeOff)    
-        playNote(51 + 3, timeOn, timeOff)    
+        playNote(55, timeOn, timeOff * 2)  
+        playNote(55, timeOnDiv2, timeOff * 4)  
+        playNote(53, timeOn, timeOff)    
+        playNote(54, timeOn, timeOff)    
     
     def solo1():
-        playNote(70, timeOn / 2, timeOff)    
-        playNote(67, timeOn / 2, timeOff)    
+        playNote(70, timeOnDiv2, timeOff)    
+        playNote(67, timeOnDiv2, timeOff)    
         playNote(62, timeOn * 4, timeOff)    
-        playNote(55 + 3, timeOn, timeOff)      
-        playNote(57 + 3, timeOn, timeOff)      
+        playNote(58, timeOn, timeOff)      
+        playNote(60, timeOn, timeOff)      
     
     def solo2():
-        playNote(70, timeOn / 2, timeOff)    
-        playNote(67, timeOn / 2, timeOff)    
+        playNote(70, timeOnDiv2, timeOff)    
+        playNote(67, timeOnDiv2, timeOff)    
         playNote(61, timeOn * 4, timeOff)    
         playNote(53, timeOn, timeOff)      
         playNote(54, timeOn, timeOff)
         
     def solo3():
-        playNote(70, timeOn / 2, timeOff)    
-        playNote(67, timeOn / 2, timeOff)    
+        playNote(70, timeOnDiv2, timeOff)    
+        playNote(67, timeOnDiv2, timeOff)    
         playNote(60, timeOn * 4, timeOff)    
         playNote(58, timeOn, timeOff)      
         playNote(60, timeOn, timeOff)
         
     def solo4():
-        playNote(58, timeOn / 2, timeOff)    
+        playNote(58, timeOnDiv2, timeOff)    
         playNote(60, timeOn, timeOff)    
-        playNote(55, timeOn + (timeOn / 2), timeOff)    
-        playNote(52 + 3, timeOn / 2, timeOff * 4)  
-        playNote(50 + 3, timeOn, timeOff)    
-        playNote(51 + 3, timeOn, timeOff)  
+        playNote(55, timeOn + (timeOnDiv2), timeOff)    
+        playNote(55, timeOnDiv2, timeOff * 4)  
+        playNote(53, timeOn, timeOff)    
+        playNote(54, timeOn, timeOff)  
         
     while i < 8: 
         playNote(62, 0.1, 0.01)
         i += 1     
-    playNote(62, timeOn / 2, timeOff / 2)
-    playNote(64, timeOn / 2, timeOff / 2)
-    playNote(65, timeOn / 2, timeOff / 2)
-    playNote(66, timeOn / 2, timeOff / 2)
+    playNote(62, timeOnDiv2, timeOffDiv2)
+    playNote(64, timeOnDiv2, timeOffDiv2)
+    playNote(65, timeOnDiv2, timeOffDiv2)
+    playNote(66, timeOnDiv2, timeOffDiv2)
     
     tact1()
     tact1() 
@@ -380,36 +391,38 @@ def missionImpossible():
 def omen():
     timeOn = 0.33
     timeOff = 0.05
+    timeOnDiv2 = timeOn / 2
+    timeOnDiv4 = timeOn / 4 
     
     def oneTact():
-        playNote(59, timeOn + (timeOn / 2), timeOff)
-        playNote(70,timeOn / 2, timeOff)
-        playNote(71, timeOn / 2, timeOff)
-        playNote(70, timeOn / 2, timeOff)
-        playNote(71, timeOn / 2, timeOff)
-        playNote(70, timeOn / 2, timeOff)
+        playNote(59, timeOn + (timeOnDiv2), timeOff)
+        playNote(70, timeOnDiv2, timeOff)
+        playNote(71, timeOnDiv2, timeOff)
+        playNote(70, timeOnDiv2, timeOff)
+        playNote(71, timeOnDiv2, timeOff)
+        playNote(70, timeOnDiv2, timeOff)
     
     def twoTact():
-        playNote(59, timeOn / 2, timeOff)
-        playNote(65, timeOn / 2, timeOff)
-        playNote(59, timeOn / 2, timeOff)
-        playNote(62, timeOn / 4, timeOff)
-        playNote(60, timeOn / 4, timeOff)
+        playNote(59, timeOnDiv2, timeOff)
+        playNote(65, timeOnDiv2, timeOff)
+        playNote(59, timeOnDiv2, timeOff)
+        playNote(62, timeOnDiv4, timeOff)
+        playNote(60, timeOnDiv4, timeOff)
          
     oneTact()
-    playNote(62, timeOn + (timeOn / 2), timeOff)
-    playNote(61, timeOn / 2, timeOff)
-    playNote(62, timeOn / 2, timeOff)
-    playNote(61, timeOn / 2, timeOff)
-    playNote(62, timeOn / 2, timeOff)
-    playNote(66, timeOn / 2, timeOff)
+    playNote(62, timeOn + (timeOnDiv2), timeOff)
+    playNote(61, timeOnDiv2, timeOff)
+    playNote(62, timeOnDiv2, timeOff)
+    playNote(61, timeOnDiv2, timeOff)
+    playNote(62, timeOnDiv2, timeOff)
+    playNote(66, timeOnDiv2, timeOff)
     oneTact()
-    playNote(59, timeOn + (timeOn / 2), timeOff)
-    playNote(70, timeOn / 2, timeOff)
-    playNote(71, timeOn / 2, timeOff)
-    playNote(70, timeOn / 2, timeOff)
-    playNote(71, timeOn / 2, timeOff)
-    playNote(70, timeOn / 2, timeOff*1.2)
+    playNote(59, timeOn + (timeOnDiv2), timeOff)
+    playNote(70, timeOnDiv2, timeOff)
+    playNote(71, timeOnDiv2, timeOff)
+    playNote(70, timeOnDiv2, timeOff)
+    playNote(71, timeOnDiv2, timeOff)
+    playNote(70, timeOnDiv2, timeOff * 1.2)
     
    
 def test_ladderNotes():
