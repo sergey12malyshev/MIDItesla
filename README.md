@@ -57,6 +57,8 @@ Cхема электрическая принципиальная трансфо
 
 
 ## Видео работы (Demo video of work) ##
+https://www.youtube.com/shorts/8kgel5WYpHc
+
 https://youtu.be/iuJQ5y0yN18
 
 ## Полезная информация (Helpful information)
