@@ -98,29 +98,29 @@ def button_callback(channel):
         print(f"Set melody: {melodyNumber}")
         
 # Melody functions start
-def popcorn():
+def popcorn_melody():
     timeOn = 0.095
     timeOff = 0.135
     
     def popcorn_1tact(timeOnLocal, timeOffLocal): 
         i = 0
-        popcorn = [57, 55,  57, 52, 49, 52, 45]  
-        while i < len(popcorn):
-            midi.playNote(popcorn[i], timeOnLocal, timeOffLocal)
+        popcorn1 = [57, 55,  57, 52, 49, 52, 45]  
+        while i < len(popcorn1):
+            midi.playNote(popcorn1[i], timeOnLocal, timeOffLocal)
             i += 1
         
     def popcorn_2tact(timeOnLocal, timeOffLocal):
         i = 0
-        popcorn = [57, 59, 60, 59, 60, 57,  59, 57, 59, 55,  57, 59, 57, 53,  57]  
-        while i < len(popcorn):
-            midi.playNote(popcorn[i], timeOnLocal, timeOffLocal)
+        popcorn2 = [57, 59, 60, 59, 60, 57,  59, 57, 59, 55,  57, 59, 57, 53,  57]  
+        while i < len(popcorn2):
+            midi.playNote(popcorn2[i], timeOnLocal, timeOffLocal)
             i += 1
             
     def popcorn_3tact(timeOnLocal, timeOffLocal):
         i = 0
-        popcorn = [57, 59, 60, 59, 60, 57,  59, 57, 59, 55,  57, 55, 57, 59,  60]  
-        while i < len(popcorn):
-            midi.playNote(popcorn[i], timeOnLocal, timeOffLocal)
+        popcorn3 = [57, 59, 60, 59, 60, 57,  59, 57, 59, 55,  57, 55, 57, 59,  60]  
+        while i < len(popcorn3):
+            midi.playNote(popcorn3[i], timeOnLocal, timeOffLocal)
             i += 1
     
     def pause():
@@ -140,7 +140,7 @@ def popcorn():
     pause()
     pause()
      
-def mortalKombat():
+def mortalKombat_melody():
     timeOn = 0.2
     timeOff = 0.07
     i = 0
@@ -162,7 +162,7 @@ def mortalKombat():
         i += 1      
            
            
-def valcesDogs():
+def valcesDogs_melody():
     timeOn = 0.3
     timeOff = 0.1
     i = 0
@@ -180,7 +180,7 @@ def valcesDogs():
         i += 1
       
       
-def mario():
+def mario_melody():
     timeOn = 0.2
     timeOff = 0.07
     timeOnDiv2 = timeOn / 2
@@ -264,7 +264,7 @@ def mario():
     midi.playNote(60, timeOn, timeOff * 12) 
     
     
-def imperialMarch():
+def imperialMarch_melody():
     timeOn = 0.35
     timeOff = 0.18
     timeOnDiv2 = timeOn / 2
@@ -332,7 +332,7 @@ def imperialMarch():
     # this 12 tact
     imperialMarch_tact2(timeOn, timeOff)
 
-def missionImpossible():
+def missionImpossible_melody():
     timeOn = 0.25
     timeOff = 0.09
     timeOnDiv2 = timeOn / 2
@@ -396,7 +396,7 @@ def missionImpossible():
     tact1()
     
     
-def omen():
+def omen_melody():
     timeOn = 0.33
     timeOff = 0.05
     timeOnDiv2 = timeOn / 2
@@ -471,19 +471,19 @@ def main():
         mN = melodyNumber 
         
         if (mN == 0):
-            mortalKombat()
+            mortalKombat_melody()
         elif (mN == 1):
-            mario()
+            mario_melody()
         elif (mN == 2):
-            imperialMarch()  
+            imperialMarch_melody()  
         elif (mN == 3):
-            valcesDogs()
+            valcesDogs_melody()
         elif (mN == 4):
-            popcorn()
+            popcorn_melody()
         elif (mN == 5):
-            omen()
+            omen_melody()
         elif (mN == 6):
-            missionImpossible()
+            missionImpossible_melody()
         elif (mN == 7):
             test_ladderNotes()
         elif (mN == 8):
